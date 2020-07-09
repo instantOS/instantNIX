@@ -58,7 +58,7 @@ stdenv.mkDerivation rec {
   propagatedBuildInputs = [ InstantLOGO InstantConf Paperbash imagemagick nitrogen ];
 
   meta = with lib; {
-    description = "Window manager of instantOS.";
+    description = "Wallpaper manager of instantOS.";
     license = licenses.mit;
     homepage = "https://github.com/instantOS/instantWM";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
