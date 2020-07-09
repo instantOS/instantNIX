@@ -1,6 +1,4 @@
-# nur-packages-template
-
-**InstantOS Nix repository**
+# InstantOS Nix repository
 
 ## Setup
 
