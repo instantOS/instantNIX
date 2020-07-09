@@ -30,9 +30,10 @@ stdenv.mkDerivation rec {
       --replace /usr/bin/dash /bin/sh
     substituteInPlace instantassist \
       --replace "/usr/bin/env dash" /bin/sh \
-      --replace "/opt/instantos/menus/apps" "$out/opt/instantos/menus/apps"
+      --replace "/opt/instantos/menus" "$out/opt/instantos/menus"
     substituteInPlace instantdoc \
-      --replace "/usr/bin/env dash" /bin/sh
+      --replace "/usr/bin/env dash" /bin/sh \
+      --replace "/opt/instantos/menus" "$out/opt/instantos/menus"
 
     substituteInPlace dm/rm.sh \
       --replace /opt/instantos/menus "$out/opt/instantos/menus"
@@ -49,7 +50,8 @@ stdenv.mkDerivation rec {
     substituteInPlace dm/tw.sh \
       --replace /opt/instantos/menus "$out/opt/instantos/menus"
     substituteInPlace dm/m.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
+      --replace /opt/instantos/menus "$out/opt/instantos/menus" \
+      --replace /opt/instantos/spotify-adblock.so "${spotify-adblock}/lib/spotify-adblock.so"
 
     patchShebangs install.sh
   '';
