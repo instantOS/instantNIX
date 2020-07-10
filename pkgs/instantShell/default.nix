@@ -5,7 +5,7 @@
 }:
 stdenv.mkDerivation {
 
-  pname = "InstantShell";
+  pname = "instantShell";
   version = "unstable";
 
   srcs = [ 
@@ -41,7 +41,7 @@ stdenv.mkDerivation {
   '';
 
   meta = with lib; {
-    description = "InstantOS Shell";
+    description = "instantOS Shell";
     license = licenses.mit;
     homepage = "https://github.com/instantOS/instantshell";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];

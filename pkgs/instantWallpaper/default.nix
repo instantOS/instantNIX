@@ -1,9 +1,9 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, InstantLOGO
-, InstantConf
-, InstantUtils
+, instantLOGO
+, instantConf
+, instantUtils
 , Paperbash
 , imagemagick
 , nitrogen
@@ -34,13 +34,13 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace wall.sh \
-      --replace /usr/share/backgrounds/readme.jpg ${InstantLOGO}/share/backgrounds/readme.jpg \
+      --replace /usr/share/backgrounds/readme.jpg ${instantLOGO}/share/backgrounds/readme.jpg \
       --replace /usr/share/instantwallpaper/wallutils.sh wallutils.sh \
-      --replace "iconf" "${InstantConf}/bin/iconf" \
-      --replace "checkinternet" "${InstantUtils}/bin/checkinternet" \
+      --replace "iconf" "${instantConf}/bin/iconf" \
+      --replace "checkinternet" "${instantUtils}/bin/checkinternet" \
       --replace "/usr/share/paperbash" "${Paperbash}/share/paperbash"
     substituteInPlace wallutils.sh \
-      --replace "iconf" "${InstantConf}/bin/iconf" \
+      --replace "iconf" "${instantConf}/bin/iconf" \
       --replace "identify" "${imagemagick}/bin/identify" \
       --replace "convert" "${imagemagick}/bin/convert" \
       --replace "-composite" "__tmp_placeholder" \
@@ -57,7 +57,7 @@ stdenv.mkDerivation rec {
     install -Dm 644 ../instantLOGO/wallpaper/defaultphoto.png "$out/share/instantwallpaper/defaultphoto.png"
   '';
 
-  propagatedBuildInputs = [ InstantLOGO InstantConf Paperbash imagemagick nitrogen ];
+  propagatedBuildInputs = [ instantLOGO instantConf Paperbash imagemagick nitrogen ];
 
   meta = with lib; {
     description = "Wallpaper manager of instantOS.";
