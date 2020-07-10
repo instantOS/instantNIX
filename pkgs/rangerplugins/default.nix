@@ -42,7 +42,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "InstantOS rangerplugins";
+    description = "instantOS rangerplugins";
     license = licenses.mit;
     homepage = "https://github.com/paperbenni/dotfiles";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
