@@ -21,7 +21,7 @@ import os.path
 from pathlib import Path as P
 
 import requests
-from nix_prefetch_github import to_nix_expression as to_nix, nix_prefetch_github as fetch
+from nix_prefetch_github import nix_prefetch_github
 
 rex_fetch = re.compile(
      # Find fetchFromGitHub lines in nix expressions (in lieu of a Nix AST)
@@ -69,7 +69,7 @@ def process_file(fl, backup):
             f"  new: {commit}\n\n"
         )
 
-        fdict = fetch(
+        fdict = nix_prefetch_github(
             f["owner"], f["repo"], rev=commit,
             prefetch=False, fetch_submodules=f["fetchSubmodules"] or False
         )
