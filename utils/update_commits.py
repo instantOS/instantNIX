@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """Update hashes in nix files for fetchFromGitHub commands.
 
+REQUIRES GITHUB_TOKEN ENVIRONMENT VARIABLE!
+The variable GITHUB_TOKEN is required to interact with the github API.
+Tokens can be created in the "Developer Settings" under "Personal Access Tokens".
+
+A comment "# branch: <specifier>" specifies the branch or tag to update in
+the nix file.
+
 Usage:
     {} [options] [file|directory]...
 
