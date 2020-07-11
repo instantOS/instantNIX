@@ -58,7 +58,6 @@ rec {
     instantConf = instantconf;
     buildPythonApplication = buildPythonApplication;
     pygobject3 = pygobject3;
-    setuptools = setuptools;
   };
   instantdotfiles = pkgs.callPackage ./pkgs/instantDotfiles {
     instantConf = instantconf;
