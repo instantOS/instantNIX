@@ -51,8 +51,9 @@ rec {
     Paperbash = paperbash;
   };
   instantwelcome = pkgs.callPackage ./pkgs/instantWELCOME {
-    gtk = pkgs.gnome3.gtk;
     instantConf = instantconf;
+    buildPythonApplication = pkgs.python3Packages.buildPythonApplication;
+    pygobject3 = pkgs.python3Packages.pygobject3;
   };
   instantdotfiles = pkgs.callPackage ./pkgs/instantDotfiles {
     instantConf = instantconf;
