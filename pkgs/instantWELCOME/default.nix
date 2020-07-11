@@ -1,11 +1,11 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, python3
-, gtk
+, buildPythonApplication
+, pygobject3
 , instantConf
 }:
-stdenv.mkDerivation rec {
+buildPythonApplication {
 
   pname = "instantWELCOME";
   version = "unstable";
@@ -16,6 +16,8 @@ stdenv.mkDerivation rec {
     rev = "2acbf9b6153de37fa20696b5357c064b4f51f325";
     sha256 = "0jffhzahy9f69wis8xj8fdn2rdyjsspz4fkh0prk8sw9wy8ld237";
   };
+
+  format = "other";
 
   postPatch = ''
     substituteInPlace welcome.sh \
@@ -31,7 +33,8 @@ stdenv.mkDerivation rec {
     install -Dm 644 welcome.glade "$out/share/instantwelcome/welcome.glade"
   '';
 
-  propagatedBuildInputs = [ gtk python3 instantConf ];
+  buildInputs = [ pygobject3  ]; 
+  propagatedBuildInputs = [ pygobject3 instantConf ];
 
   meta = with lib; {
     description = "Welcome app for instantOS";

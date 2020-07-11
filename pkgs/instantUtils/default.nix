@@ -73,7 +73,9 @@ stdenv.mkDerivation rec {
     install -Dm 555 installinstantos.sh $out/bin/installinstantos
     
     mkdir -p $out/share/instantutils
+    chmod +x *.sh
     mv *.sh $out/share/instantutils
+    chmod +x programs/*
     mv programs/* $out/bin
 
     mkdir -p $out/share/applications
