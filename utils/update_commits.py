@@ -89,7 +89,7 @@ def print_fetches(file_, clone=False, **kwargs):
         print(match.group())
         sys.stdout.flush()
         if clone:
-            clone_repo(**match.groupdict())
+            clone_repo(file_=file_, **match.groupdict())
 
 
 def update_hashes(file_, backup=None, **kwargs):
@@ -123,11 +123,15 @@ def replace_with_backup(file_, backup, text):
     file_.write_text(text)
 
 
-def clone_repo(owner, repo, rev, **_):
+def clone_repo(file_, owner, repo, rev, **_):
     cmd = f"git clone 'https://github.com/{owner}/{repo}' && cd '{repo}' && git checkout '{rev}'",
-    clonedir = P(__filedir__).parent
+    cloneroot = P(__filedir__).parent
+    clonedir = cloneroot.joinpath(repo)
+    dst = file_.parent
+    src = P(os.path.relpath(clonedir, dst))
+    os.symlink(src, dst.joinpath("src"))
     sys.stderr.write(f"running command: '{cmd}'\n")
-    subprocess.Popen(cmd, shell=True, cwd=clonedir, stdout=sys.stdout, stderr=sys.stderr)
+    subprocess.Popen(cmd, shell=True, cwd=cloneroot, stdout=sys.stdout, stderr=sys.stderr)
 
 
 def walk_dirs(dirs=None, processor=update_hashes, **kwargs):
