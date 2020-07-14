@@ -7,24 +7,25 @@
 , rofi
 , rxvt_unicode
 , st
-, instantASSIST
+, instantAssist
 , instantUtils
+, extraPatches ? []
 }:
 stdenv.mkDerivation rec {
 
-  pname = "instantWM";
-  version = "beta2";
+  pname = "instantWm";
+  version = "unstable";
 
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantWM";
-    rev = "${version}";
-    sha256 = "098s2gg526zzv9rpsc6d2ski8nscbrn3ngvlhkq6kmzs66d6pvb0";
+    rev = "847e9f78fab4448186b42420283d6298c361d889";
+    sha256 = "14pfg18xa96m2dpszdq6c9kg6rlfpj3y64pm5nxy2jy5mimdrw2n";
   };
 
   patches = [
     ./config_def_h.patch
-  ];
+  ] ++ extraPatches;
 
   postPatch = ''
     substituteInPlace config.mk \
@@ -36,7 +37,7 @@ stdenv.mkDerivation rec {
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
       --replace "\"st\"" "\"${st}/bin/st\"" \
-      --replace /opt/instantos/menus "${instantASSIST}/opt/instantos/menus"
+      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus"
   '';
 
   nativeBuildInputs = [ gnumake ];
@@ -48,13 +49,13 @@ stdenv.mkDerivation rec {
     st
   ] ++
   [
-    instantASSIST
+    instantAssist
     instantUtils
   ];
 
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
-    #install -Dm 555 startinstantos $out/bin/startinstantos
+    install -Dm 555 startinstantos $out/bin/startinstantos
   '';
 
   meta = with lib; {

@@ -7,7 +7,7 @@
 }:
 stdenv.mkDerivation rec {
 
-  pname = "instantMENU";
+  pname = "instantMenu";
   version = "unstable";
 
   src = fetchFromGitHub {

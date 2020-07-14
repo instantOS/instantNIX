@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, instantMENU
+, instantMenu
 }:
 stdenv.mkDerivation {
 
@@ -16,7 +16,7 @@ stdenv.mkDerivation {
   };
 
   propagatedBuildInputs = [
-    instantMENU
+    instantMenu
   ];
 
   installPhase = ''

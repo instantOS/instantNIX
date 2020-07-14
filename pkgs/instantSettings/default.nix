@@ -2,9 +2,9 @@
 , stdenv
 , fetchFromGitHub
 , buildPythonApplication
-, instantASSIST
+, instantAssist
 , instantConf
-, instantWALLPAPER
+, instantWallpaper
 , arandr
 , atk
 , autorandr
@@ -36,7 +36,7 @@ let
 in
 buildPythonApplication {
 
-  pname = "instantSETTINGS";
+  pname = "instantSettings";
   version = "unstable";
 
   src = fetchFromGitHub {
@@ -48,9 +48,9 @@ buildPythonApplication {
 
   postPatch = ''
     substituteInPlace instantSETTINGS/mainsettings.py \
-      --replace /opt/instantos/menus "${instantASSIST}/opt/instantos/menus/dm/tk.sh" \
+      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus/dm/tk.sh" \
       --replace iconf "${instantConf}/bin/iconf" \
-      --replace instantwallpaper "${instantWALLPAPER}/bin/instantwallpaper" \
+      --replace instantwallpaper "${instantWallpaper}/bin/instantwallpaper" \
       --replace /usr/share/instantsettings "$out/share/instantsettings" \
       --replace "st " "${st}/bin/st \
       --replace arandr "${arandr}/bin/arandr" \
@@ -69,7 +69,7 @@ buildPythonApplication {
     substituteInPlace modules/mouse/mousesettings.py \
       --replace iconf "${instantConf}/bin/iconf"
   '';
-  
+
   postInstall = ''
     install -Dm 644 instantSETTINGS/mainsettings.glade "$out/share/instantsettings/mainsettings.glade"
     mkdir -p "$out/share/applications"
@@ -81,10 +81,10 @@ buildPythonApplication {
   nativeBuildInputs = gnomeDeps;
   buildInputs = pyModuleDeps;
   propagatedBuildInputs = pyModuleDeps ++
-  [ 
-    instantASSIST
+  [
+    instantAssist
     instantConf
-    instantWALLPAPER
+    instantWallpaper
     arandr
     atk
     autorandr
