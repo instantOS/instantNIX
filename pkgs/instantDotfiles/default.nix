@@ -2,7 +2,7 @@
 , stdenv
 , fetchFromGitHub
 , instantConf
-, instantWALLPAPER
+, instantWallpaper
 }:
 stdenv.mkDerivation rec {
 
@@ -27,7 +27,7 @@ stdenv.mkDerivation rec {
       --replace iconf "${instantConf}/bin/iconf" \
       --replace "/usr/share/instantdotfiles" "$out/share/instantdotfiles"
     substituteInPlace neofetch.conf \
-      --replace "/usr/share/instantwallpaper" "${instantWALLPAPER}/share/instantwallpaper"
+      --replace "/usr/share/instantwallpaper" "${instantWallpaper}/share/instantwallpaper"
   '';
   
   installPhase = ''
@@ -38,7 +38,7 @@ stdenv.mkDerivation rec {
     echo "6081b26" > $out/share/instantdotfiles/versionhash
   '';
 
-  propagatedBuildInputs = [ instantConf instantWALLPAPER ];
+  propagatedBuildInputs = [ instantConf instantWallpaper ];
 
   meta = with lib; {
     description = "instantOS dotfiles";

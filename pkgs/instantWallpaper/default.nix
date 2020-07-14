@@ -1,7 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, instantLOGO
+, instantLogo
 , instantConf
 , instantUtils
 , Paperbash
@@ -34,7 +34,7 @@ stdenv.mkDerivation rec {
 
   postPatch = ''
     substituteInPlace wall.sh \
-      --replace /usr/share/backgrounds/readme.jpg ${instantLOGO}/share/backgrounds/readme.jpg \
+      --replace /usr/share/backgrounds/readme.jpg ${instantLogo}/share/backgrounds/readme.jpg \
       --replace /usr/share/instantwallpaper/wallutils.sh wallutils.sh \
       --replace "iconf" "${instantConf}/bin/iconf" \
       --replace "checkinternet" "${instantUtils}/bin/checkinternet" \
@@ -48,7 +48,7 @@ stdenv.mkDerivation rec {
       --replace "composite" "${imagemagick}/bin/composite" \
       --replace "__tmp_placeholder" "-composite"
   '';
-  
+
   installPhase = ''
     install -Dm 555 wallutils.sh "$out/share/instantwallpaper/wallutils.sh"
     install -Dm 555 wall.sh "$out/bin/instantwallpaper"
@@ -58,7 +58,7 @@ stdenv.mkDerivation rec {
     install -Dm 644 ../instantLOGO/wallpaper/defaultphoto.png "$out/share/instantwallpaper/defaultphoto.png"
   '';
 
-  propagatedBuildInputs = [ instantLOGO instantConf Paperbash imagemagick nitrogen ];
+  propagatedBuildInputs = [ instantLogo instantConf Paperbash imagemagick nitrogen ];
 
   meta = with lib; {
     description = "Wallpaper manager of instantOS.";

@@ -6,12 +6,12 @@
 }:
 stdenv.mkDerivation rec {
 
-  pname = "instantASSIST";
+  pname = "instantAssist";
   version = "unstable";
 
   src = fetchFromGitHub {
     owner = "instantOS";
-    repo = "instantASSIST";
+    repo = "instantAssist";
     rev = "3d1032b348ae09f4d480f22212354eb9025fe9de";
     sha256 = "0z24afqsgsd0hp9sl2w48wp6mxhk65qbisrms1synkm15kw3fwp0";
   };

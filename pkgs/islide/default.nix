@@ -3,7 +3,7 @@
 , fetchFromGitHub
 , gnumake
 , xlibs
-, instantASSIST
+, instantAssist
 }:
 stdenv.mkDerivation rec {
 
@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
     substituteInPlace config.mk \
       --replace "PREFIX = /usr/" "PREFIX = $out"
     substituteInPlace islide.c \
-      --replace /opt/instantos/menus "${instantASSIST}/opt/instantos/menus" \
+      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus" \
   '';
   
   # installPhase = ''
@@ -29,12 +29,12 @@ stdenv.mkDerivation rec {
   #   install -Dm 644 desktop/st-luke.desktop $out/share/applications/st-luke.desktop
   # '';
 
-  # propagatedBuildInputs = [ st instantDotfiles neofetch firefox nitrogen instantConf acpi instantTHEMES dunst instantShell rangerplugins ];
+  # propagatedBuildInputs = [ st instantDotfiles neofetch firefox nitrogen instantConf acpi instantThemes dunst instantShell rangerplugins ];
   # propagatedBuildInputs = [];
   nativeBuildInputs = [ gnumake ];
   buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
 
-  propagatedBuildInputs = [ instantASSIST ];
+  propagatedBuildInputs = [ instantAssist ];
 
   meta = with lib; {
     description = "instantOS Slide";
