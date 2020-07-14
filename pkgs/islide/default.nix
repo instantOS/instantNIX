@@ -5,7 +5,7 @@
 , xlibs
 , instantAssist
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "islide";
   version = "unstable";
@@ -15,6 +15,7 @@ stdenv.mkDerivation rec {
     repo = "islide";
     rev = "7363ce094d5260c6932375d7d312b102e3d201dc";
     sha256 = "1rdx9g6ljbc5m55g9vjxj10zfn1qv3d54nfiv12cmsz365a0i135";
+    name = "instantOS_islide";
   };
 
   postPatch = ''
@@ -23,7 +24,7 @@ stdenv.mkDerivation rec {
     substituteInPlace islide.c \
       --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus" \
   '';
-  
+
   # installPhase = ''
   #   install -Dm 555 autostart.sh $out/bin/instantautostart
   #   install -Dm 644 desktop/st-luke.desktop $out/share/applications/st-luke.desktop

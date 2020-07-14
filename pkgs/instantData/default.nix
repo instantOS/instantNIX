@@ -15,7 +15,7 @@
 , Paperbash
 , rangerplugins
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "instantData";
   version = "unstable";
@@ -25,6 +25,7 @@ stdenv.mkDerivation rec {
     repo = "instantData";
     rev = "ade1148cd26c272cb569f9a4c10337f5a4e91f29";
     sha256 = "1207ihwxss7v3wz4xcvg21p10a8yz1r9phzb4n43138jpaynziqx";
+    name = "instantOS_instantData";
   };
 
   propagatedBuildInputs = [

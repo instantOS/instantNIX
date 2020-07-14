@@ -5,7 +5,7 @@
 , xlibs
 , instantUtils
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "instantMenu";
   version = "unstable";
@@ -15,6 +15,7 @@ stdenv.mkDerivation rec {
     repo = "instantMENU";
     rev = "0b97d4ce94715eec2e16108a4ff1aa7c48b43305";
     sha256 = "1hxlf1k4vhg28qjfa97pqa2qsrn8dvmyz262737zc4ykv8100ghd";
+    name = "instantOS_instantMenu";
   };
 
   postPatch = ''
