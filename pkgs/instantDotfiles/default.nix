@@ -4,7 +4,7 @@
 , instantConf
 , instantWallpaper
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "instantDotfiles";
   version = "unstable";
@@ -14,6 +14,7 @@ stdenv.mkDerivation rec {
     repo = "dotfiles";
     rev = "ac679449e2d4bff06ced1ac3e144f0bd1228f67c";
     sha256 = "05kzzsn687vcxy2aq87padrn9c2qppx6zxwk1bk96hfvbyk09gh8";
+    name = "instantOS_instantDotfiles";
   };
 
   patches = [ ./fix-absolute-paths.patch ];

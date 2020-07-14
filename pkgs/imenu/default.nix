@@ -13,6 +13,7 @@ stdenv.mkDerivation {
     repo = "imenu";
     rev = "18e35de1f6137180876be800d5ae749e40c5f7e9";
     sha256 = "0mzwpyrr3q8yp5wccsggiybfxsw80q8j5plf964isakapbn86dhj";
+    name = "instantOS_imenu";
   };
 
   propagatedBuildInputs = [

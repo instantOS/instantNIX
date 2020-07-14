@@ -14,7 +14,7 @@ stdenv.mkDerivation {
       repo = "instantshell";
       rev = "2fcc83fea4c71b7537ca8b5ed3c0ea7147d79405";
       sha256 = "0iagkp0xpm0bbf3ajngwc8azhw7g97qkwg5q4wii6y7xibj958f0";
-      name = "instantshell";
+      name = "instantOS_instantShell";
     })
     (fetchFromGitHub {
       owner = "ohmyzsh";
@@ -29,14 +29,14 @@ stdenv.mkDerivation {
 
   postPatch = ''
     ls -lh
-    cat instantshell/zshrc >> ohmyzsh/templates/zshrc.zsh-template
-    rm instantshell/zshrc
+    cat instantOS_instantShell/zshrc >> ohmyzsh/templates/zshrc.zsh-template
+    rm instantOS_instantShell/zshrc
   '';
 
   installPhase = ''
-    install -Dm 644 instantshell/instantos.plugin.zsh $out/share/instantshell/custom/plugins/instantos/instantos.plugin.zsh
-    install -Dm 644 instantshell/instantos.zsh-theme $out/share/instantshell/custom/themes/instantos.zsh-theme
-    install -Dm 555 instantshell/install.sh $out/bin/instantshell
+    install -Dm 644 instantOS_instantShell/instantos.plugin.zsh $out/share/instantshell/custom/plugins/instantos/instantos.plugin.zsh
+    install -Dm 644 instantOS_instantShell/instantos.zsh-theme $out/share/instantshell/custom/themes/instantos.zsh-theme
+    install -Dm 555 instantOS_instantShell/install.sh $out/bin/instantshell
     cp -r ohmyzsh/* $out/share/instantshell
   '';
 

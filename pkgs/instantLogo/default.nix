@@ -4,7 +4,7 @@
 , gnumake
 , xlibs
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "instantLogo";
   version = "unstable";
@@ -14,6 +14,7 @@ stdenv.mkDerivation rec {
     repo = "instantLOGO";
     rev = "86aaccaa62abef67f40c9717860bf01beb541767";
     sha256 = "073jgqdwz01755awjx882w9i5lwwqcjzwklcwwc3kfa52rcpd9bh";
+    name = "instantOS_instantLogo";
   };
 
   installPhase = ''

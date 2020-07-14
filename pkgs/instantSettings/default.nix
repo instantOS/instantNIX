@@ -44,6 +44,7 @@ buildPythonApplication {
     repo = "instantSETTINGS";
     rev = "d17718ff2d9eedfee093c3d7efa41f24ab13d861";
     sha256 = "1n8lvz4jn4b0476rb45x5x8ps0041l3nsjvdvkxhkb3sv9s8scwp";
+    name = "instantOS_instantSettings";
   };
 
   postPatch = ''

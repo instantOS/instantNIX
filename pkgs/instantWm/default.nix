@@ -11,7 +11,7 @@
 , instantUtils
 , extraPatches ? []
 }:
-stdenv.mkDerivation rec {
+stdenv.mkDerivation {
 
   pname = "instantWm";
   version = "unstable";
@@ -21,6 +21,7 @@ stdenv.mkDerivation rec {
     repo = "instantWM";
     rev = "847e9f78fab4448186b42420283d6298c361d889";
     sha256 = "14pfg18xa96m2dpszdq6c9kg6rlfpj3y64pm5nxy2jy5mimdrw2n";
+    name = "instantOS_instantWm";
   };
 
   patches = [
