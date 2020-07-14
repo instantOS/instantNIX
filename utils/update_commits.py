@@ -126,12 +126,17 @@ def replace_with_backup(file_, backup, text):
 def clone_repo(file_, owner, repo, rev, **_):
     cmd = f"git clone 'https://github.com/{owner}/{repo}' && cd '{repo}' && git checkout '{rev}'",
     cloneroot = P(__filedir__).parent
-    clonedir = cloneroot.joinpath(repo)
-    dst = file_.parent
-    src = P(os.path.relpath(clonedir, dst))
-    os.symlink(src, dst.joinpath("src"))
     sys.stderr.write(f"running command: '{cmd}'\n")
     subprocess.Popen(cmd, shell=True, cwd=cloneroot, stdout=sys.stdout, stderr=sys.stderr)
+    try:
+        clonedir = cloneroot.joinpath(repo)
+        dst = file_.parent
+        src = P(os.path.relpath(clonedir, dst))
+        dst = dst.joinpath("sources")
+        dst.mkdir()
+        os.symlink(src, dst.joinpath(repo))
+    except Exception:
+        logging.exception(f"Could not create symlink for {owner}/{repo}")
 
 
 def walk_dirs(dirs=None, processor=update_hashes, **kwargs):
