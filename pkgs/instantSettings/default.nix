@@ -50,7 +50,7 @@ buildPythonApplication {
   postPatch = ''
     substituteInPlace instantSETTINGS/mainsettings.py \
       --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus/dm/tk.sh" \
-      --replace iconf "${instantConf}/bin/iconf" \
+      --replace "\"iconf" "\"${instantConf}/bin/iconf" \
       --replace instantwallpaper "${instantWallpaper}/bin/instantwallpaper" \
       --replace /usr/share/instantsettings "$out/share/instantsettings" \
       --replace "st " "${st}/bin/st \
@@ -66,9 +66,9 @@ buildPythonApplication {
     substituteInPlace modules/instantos/rox.sh \
       --replace /usr/share/applications "$out/share/applications"
     substituteInPlace modules/instantos/settings.py \
-      --replace iconf "${instantConf}/bin/iconf"
+      --replace "\"iconf" "\"${instantConf}/bin/iconf"
     substituteInPlace modules/mouse/mousesettings.py \
-      --replace iconf "${instantConf}/bin/iconf"
+      --replace "\"iconf" "\"${instantConf}/bin/iconf"
   '';
 
   postInstall = ''
