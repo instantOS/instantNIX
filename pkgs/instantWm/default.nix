@@ -9,7 +9,9 @@
 , st
 , instantAssist
 , instantUtils
+, instantDotfiles
 , extraPatches ? []
+, defaultTerminal ? st
 }:
 stdenv.mkDerivation {
 
@@ -19,8 +21,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantWM";
-    rev = "847e9f78fab4448186b42420283d6298c361d889";
-    sha256 = "14pfg18xa96m2dpszdq6c9kg6rlfpj3y64pm5nxy2jy5mimdrw2n";
+    rev = "ef3327f995ed44975806a0eb3f09a531925b2e0e";
+    sha256 = "0nsy9vgbbj6q17m1wzpgk2igbhhrgsg3z4wpi23lmkh8rlwwb0qc";
     name = "instantOS_instantWm";
   };
 
@@ -37,8 +39,9 @@ stdenv.mkDerivation {
       --replace "\"pavucontrol\"" "\"${pavucontrol}/bin/pavucontrol\"" \
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
-      --replace "\"st\"" "\"${st}/bin/st\"" \
-      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus"
+      --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.elemAt (builtins.match "(.*)-.*" defaultTerminal.name) 0}\"" \
+      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus" \
+      --replace /usr/share/instantdotfiles "${instantDotfiles}/share/instantdotfiles/"
   '';
 
   nativeBuildInputs = [ gnumake ];
