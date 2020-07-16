@@ -39,7 +39,7 @@ stdenv.mkDerivation {
       --replace "\"pavucontrol\"" "\"${pavucontrol}/bin/pavucontrol\"" \
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
-      --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.elemAt (builtins.match "(.*)-.*" defaultTerminal.name) 0}\"" \
+      --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.head (builtins.match "(.*)-.*" defaultTerminal.name)}\"" \
       --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus" \
       --replace /usr/share/instantdotfiles "${instantDotfiles}/share/instantdotfiles/"
   '';
