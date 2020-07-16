@@ -5,7 +5,16 @@
 # commands such as:
 #     nix-build -A mypackage
 
-{ pkgs ? import <nixpkgs> {} }:
+{
+  # Per default, we should build against a stable version of nixpkgs
+  # Note: Not using fetchFromGitHub because it comes from nixpkgs and we would import two versions
+  pkgs ? import (builtins.fetchTarball
+    name = "nixos-stable-20.03";
+    url = "https://github.com/NixOS/nixpkgs/archive/5272327b81ed355bbed5659b8d303cf2979b6953.tar.gz";
+    sha256 = "0182ys095dfx02vl2a20j1hz92dx3mfgz2a6fhn31bqlp1wa8hlq";
+  }) {}
+  #pkgs ? import <nixpkgs> {}
+}:
 
 rec {
   # The `lib`, `modules`, and `overlay` names are special
@@ -94,6 +103,7 @@ rec {
     };
     paths = [
         imenu
+        islide
         instantassist
         instantconf
         instantdata
