@@ -20,7 +20,7 @@ rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
-  overlays = import ./overlays; # nixpkgs overlays
+  overlays = pkgs.stdenv.lib.traceVal (import ./overlays); # nixpkgs overlays
 
   # instant WM and utils
   instantconf = pkgs.callPackage ./pkgs/instantConf { };
@@ -78,6 +78,7 @@ rec {
     instantUtils = instantutils;
     instantDotfiles = instantdotfiles;
   };
+  firacodenerd = pkgs.callPackage ./pkgs/firaCodeNerd {};
   instantdata = pkgs.callPackage ./pkgs/instantData {
     instantAssist = instantassist;
     instantConf = instantconf;
@@ -120,6 +121,7 @@ rec {
         instantwidgets
         instantwm
         paperbash
+        firacodenerd
         rangerplugins
         spotify-adblock
     ];
