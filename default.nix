@@ -63,6 +63,7 @@ rec {
     pygobject3 = pygobject3;
     gnome-disk-utility = pkgs.gnome3.gnome-disk-utility;
     xfce4-power-manager = pkgs.xfce.xfce4-power-manager;
+    firaCodeNerd = firacodenerd;
   };
   instantwelcome = with pkgs.python3Packages; pkgs.callPackage ./pkgs/instantWelcome {
     instantConf = instantconf;
@@ -121,7 +122,6 @@ rec {
         instantwidgets
         instantwm
         paperbash
-        firacodenerd
         rangerplugins
         spotify-adblock
     ];

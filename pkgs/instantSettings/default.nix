@@ -18,7 +18,7 @@
 , pavucontrol
 , pygobject3
 , st
-, firacodenerd
+, firaCodeNerd
 , system-config-printer
 , wrapGAppsHook
 , xfce4-power-manager
@@ -103,7 +103,7 @@ buildPythonApplication {
     system-config-printer
     wrapGAppsHook
     xfce4-power-manager
-    firacodenerd
+    firaCodeNerd
   ];
 
   meta = with lib; {
