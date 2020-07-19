@@ -14,6 +14,7 @@
 , rangerplugins
 , rofi
 , st
+, wmctrl
 , xfce4-power-manager
 , zenity
 }:
@@ -91,6 +92,8 @@ stdenv.mkDerivation {
       --prefix PATH : ${lib.makeBinPath [ acpi pciutils ]}
     wrapProgram "$out/bin/ipicom" \
       --prefix PATH : ${lib.makeBinPath [ picom ]}
+    wrapProgram "$out/bin/iswitch" \
+      --prefix PATH : ${lib.makeBinPath [ wmctrl ]}
     '';
 
   nativeBuildInputs = [ makeWrapper ];
@@ -103,9 +106,12 @@ stdenv.mkDerivation {
     libnotify
     neofetch
     nitrogen
+    pciutils
     picom
     rangerplugins
+    rofi
     st
+    wmctrl
     xfce4-power-manager
     zenity
   ];

@@ -50,7 +50,7 @@ stdenv.mkDerivation {
     pavucontrol
     rofi
     rxvt_unicode
-    st
+    defaultTerminal
   ] ++
   [
     instantAssist
