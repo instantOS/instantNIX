@@ -14,6 +14,7 @@
 , picom
 , rangerplugins
 , rofi
+, rox-filer
 , st
 , wmctrl
 , xfce4-power-manager
@@ -47,6 +48,7 @@ stdenv.mkDerivation {
     picom
     rangerplugins
     rofi
+    rox-filer
     st
     wmctrl
     xfce4-power-manager
@@ -99,7 +101,7 @@ stdenv.mkDerivation {
   postInstall = ''
     # Wrapping PATHS
     wrapProgram "$out/bin/instantautostart" \
-      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify xfce4-power-manager zenity ]} \
+      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify rox-filer xfce4-power-manager zenity ]} \
       --run export\ PATH="\"\$(instantdata -d)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -s)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -t)/bin\""\$\{PATH:\+\':\'\}\$PATH
@@ -115,7 +117,7 @@ stdenv.mkDerivation {
       --prefix PATH : ${lib.makeBinPath [ picom ]}
     wrapProgram "$out/bin/iswitch" \
       --prefix PATH : ${lib.makeBinPath [ wmctrl ]}
-    '';
+  '';
 
   meta = with lib; {
     description = "instantOS Utils";
