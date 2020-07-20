@@ -16,7 +16,6 @@
 , neovim
 , pavucontrol
 , st
-, firaCodeNerd
 , system-config-printer
 , udiskie
 , xfce4-power-manager
