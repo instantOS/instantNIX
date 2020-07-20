@@ -13,24 +13,24 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantMENU";
-    rev = "a75fa3e9d4b0a81cba699fb1fdf02dfbefb7be72";
-    sha256 = "13aqxsiqh25bfrmq2cw42hgrghnxpii8zllxhhqf7r46s93ss5q0";
-    name = "instantOS_instantMenu";
+    rev = "2fb01ab802a66bb9d1341ecac4b3b510d72953de";
+    sha256 = "1p0rawh4bn9g2dy4g5gw51g7c6z4jw4s6yqywj9cjrp29xnsmkid";
   };
-
-  postPatch = ''
-    substituteInPlace config.mk \
-      --replace "PREFIX = /usr" "PREFIX = $out"
-  '';
 
   nativeBuildInputs = [ gnumake ];
   buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
   propagatedBuildInputs = [ instantUtils ];
 
+  postPatch = ''
+    substituteInPlace config.mk \
+      --replace "PREFIX = /usr" "PREFIX = $out"
+    patchShebangs theme.sh
+  '';
+
   meta = with lib; {
-    description = "basic menu for instantOS.";
+    description = "Basic menu for instantOS";
     license = licenses.mit;
-    homepage = "https://github.com/instantOS/instantWM";
+    homepage = "https://github.com/instantOS/instantMENU";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;
   };

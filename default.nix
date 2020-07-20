@@ -23,6 +23,9 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   # instant WM and utils
+  gufw = with pkgs.python3Packages; pkgs.callPackage ./pkgs/gufw {
+    inherit buildPythonApplication distutils_extra;
+  };
   instantconf = pkgs.callPackage ./pkgs/instantConf { };
   instantlogo = pkgs.callPackage ./pkgs/instantLogo { };
   instantshell = pkgs.callPackage ./pkgs/instantShell { };
@@ -58,10 +61,10 @@ rec {
   instantsettings = with pkgs.python3Packages; pkgs.callPackage ./pkgs/instantSettings {
     instantAssist = instantassist;
     instantConf = instantconf;
+    instantUtils = instantutils;
     instantWallpaper = instantwallpaper;
-    buildPythonApplication = buildPythonApplication;
-    pygobject3 = pygobject3;
     gnome-disk-utility = pkgs.gnome3.gnome-disk-utility;
+    gufw = gufw;
     xfce4-power-manager = pkgs.xfce.xfce4-power-manager;
   };
   instantwelcome = with pkgs.python3Packages; pkgs.callPackage ./pkgs/instantWelcome {

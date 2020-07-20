@@ -3,6 +3,7 @@
 , fetchFromGitHub
 , makeWrapper
 , acpi
+, autorandr
 , conky
 , dunst
 , firefox
@@ -26,10 +27,31 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "3d8fc160698c099b79b14e748d7f73ee6db09e79";
-    sha256 = "0l7w62mmxwbs4s3pb4v97q41bxrgxpvb6cfn2vvqmmbgx906inqh";
+    rev = "a84d051ae2faf64226ebc80b345c1199c035d0ad";
+    sha256 = "1llklsnh92lz54pw46brn4lg4g69xqa2fgzn1hn435s3gs1crici";
     name = "instantOS_instantUtils";
   };
+
+  nativeBuildInputs = [ makeWrapper ];
+
+  propagatedBuildInputs = [
+    acpi
+    autorandr
+    conky
+    dunst
+    firefox
+    libnotify
+    neofetch
+    nitrogen
+    pciutils
+    picom
+    rangerplugins
+    rofi
+    st
+    wmctrl
+    xfce4-power-manager
+    zenity
+  ];
 
   postPatch = ''
     substituteInPlace programs/appmenu \
@@ -49,7 +71,6 @@ stdenv.mkDerivation {
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
-
   '';
 
   installPhase = ''
@@ -78,7 +99,7 @@ stdenv.mkDerivation {
   postInstall = ''
     # Wrapping PATHS
     wrapProgram "$out/bin/instantautostart" \
-      --prefix PATH : ${lib.makeBinPath [ conky dunst libnotify xfce4-power-manager zenity ]} \
+      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify xfce4-power-manager zenity ]} \
       --run export\ PATH="\"\$(instantdata -d)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -s)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -t)/bin\""\$\{PATH:\+\':\'\}\$PATH
@@ -95,26 +116,6 @@ stdenv.mkDerivation {
     wrapProgram "$out/bin/iswitch" \
       --prefix PATH : ${lib.makeBinPath [ wmctrl ]}
     '';
-
-  nativeBuildInputs = [ makeWrapper ];
-
-  propagatedBuildInputs = [ 
-    acpi
-    conky
-    dunst
-    firefox
-    libnotify
-    neofetch
-    nitrogen
-    pciutils
-    picom
-    rangerplugins
-    rofi
-    st
-    wmctrl
-    xfce4-power-manager
-    zenity
-  ];
 
   meta = with lib; {
     description = "instantOS Utils";
