@@ -2,6 +2,7 @@
 , stdenv
 , fetchFromGitHub
 , sqlite
+, nerdfonts
 }:
 stdenv.mkDerivation {
 
@@ -24,6 +25,8 @@ stdenv.mkDerivation {
       name = "ohmyzsh";
     })
   ];
+
+  propagatedBuildInputs = [ nerdfonts ];
 
   sourceRoot = ".";
 

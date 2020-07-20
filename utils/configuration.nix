@@ -109,6 +109,7 @@ in {
     gitAndTools.git git-lfs
     nix-prefetch-scripts
     nur.repos.instantos.instantixos
+    (neovim.override {viAlias = true; vimAlias = true;})
   ];
 
   nixpkgs.config.allowUnfree = true;

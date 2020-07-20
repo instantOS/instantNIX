@@ -16,6 +16,7 @@
 , neovim
 , pavucontrol
 , st
+, firaCodeNerd
 , system-config-printer
 , udiskie
 , xfce4-power-manager
@@ -58,7 +59,8 @@ stdenv.mkDerivation {
     owner = "SCOTT-HAMILTON";
     repo = "instantSETTINGS";
     rev = "370535a376dc506f1c6cdf437e1d7f949b2a66eb";
-    sha256 = "0wyavqapvyg3imlyr3y768c999vx0xpwng3yzqs34si52zwxm734"; 
+    sha256 = "0wyavqapvyg3imlyr3y768c999vx0xpwng3yzqs34si52zwxm734";
+    name = "scotthamilton_instantSettings";
   };
 
   nativeBuildInputs = [ makeWrapper ];

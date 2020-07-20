@@ -22,7 +22,7 @@ pkgs.lib.makeExtensible (self: rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
-  overlays = import ./overlays; # nixpkgs overlays
+  overlays = pkgs.stdenv.lib.traceVal (import ./overlays); # nixpkgs overlays
 
   # instant WM and utils
   gufw = with pkgs.python3Packages; pkgs.callPackage ./pkgs/gufw { inherit buildPythonApplication distutils_extra; };

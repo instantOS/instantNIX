@@ -7,6 +7,8 @@
 , rofi
 , rxvt_unicode
 , st
+, cantarell-fonts
+, joypixels
 , instantAssist
 , instantUtils
 , instantDotfiles
@@ -46,7 +48,9 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ gnumake ];
   buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
-  propagatedBuildInputs = [ 
+  propagatedBuildInputs = [
+    cantarell-fonts
+    joypixels
     pavucontrol
     rofi
     rxvt_unicode
