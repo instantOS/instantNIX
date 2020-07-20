@@ -13,8 +13,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantMENU";
-    rev = "2fb01ab802a66bb9d1341ecac4b3b510d72953de";
-    sha256 = "1p0rawh4bn9g2dy4g5gw51g7c6z4jw4s6yqywj9cjrp29xnsmkid";
+    rev = "6c239b5ad5291f9bb40bd3814f2adb3b2d9ee593";
+    sha256 = "016fkp5qcbpgikc7n7l2wc401qbykhidrjsfrmcrwfy55xjqxd1m";
   };
 
   nativeBuildInputs = [ gnumake ];
