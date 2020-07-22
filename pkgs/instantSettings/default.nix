@@ -7,23 +7,22 @@
 , instantUtils
 , instantWallpaper
 , arandr
+, arc-theme
 , autorandr
 , bc
 , blueman
+, firaCodeNerd
 , gnome-disk-utility
 , gufw
+, hicolor-icon-theme
 , lxappearance-gtk3
 , neovim
+, papirus-icon-theme
 , pavucontrol
 , st
-, firaCodeNerd
 , system-config-printer
 , udiskie
 , xfce4-power-manager
-, papirus-icon-theme
-, firaCodeNerd
-, arc-theme
-, hicolor-icon-theme
 }:
 let
   utilities = [
