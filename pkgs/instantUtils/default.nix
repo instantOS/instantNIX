@@ -8,6 +8,7 @@
 , dunst
 , firefox
 , libnotify
+, lxsession
 , neofetch
 , nitrogen
 , pciutils
@@ -42,6 +43,7 @@ stdenv.mkDerivation {
     dunst
     firefox
     libnotify
+    lxsession
     neofetch
     nitrogen
     pciutils
@@ -101,7 +103,7 @@ stdenv.mkDerivation {
   postInstall = ''
     # Wrapping PATHS
     wrapProgram "$out/bin/instantautostart" \
-      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify rox-filer xfce4-power-manager zenity ]} \
+      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify lxsession rox-filer xfce4-power-manager zenity ]} \
       --run export\ PATH="\"\$(instantdata -d)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -s)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -t)/bin\""\$\{PATH:\+\':\'\}\$PATH
