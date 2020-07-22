@@ -31,6 +31,8 @@ stdenv.mkDerivation {
     })
   ];
 
+  patches = [ ./test.patch ];
+
   sourceRoot = "instantOS_instantWallpaper";
 
   nativeBuildInputs = [ makeWrapper ];
@@ -59,13 +61,16 @@ stdenv.mkDerivation {
     install -Dm 644 ../instantOS_instantLogo/wallpaper/readme.jpg "$out/share/backgrounds/readme.jpg"
     install -Dm 644 ../instantOS_instantLogo/ascii.txt "$out/share/instantwallpaper/ascii.txt"
     install -Dm 644 ../instantOS_instantLogo/wallpaper/defaultphoto.png "$out/share/instantwallpaper/defaultphoto.png"
+    runHook postInstall
   '';
 
   postInstall = ''
     wrapProgram "$out/bin/instantwallpaper" \
       --prefix PATH : ${lib.makeBinPath [ instantConf instantUtils nitrogen ]}
-    wrapProgram "$out/share/instantwallpaper/wallutils.sh" \
-      --prefix PATH : ${lib.makeBinPath [ instantConf instantUtils imagemagick ]}
+    # wrapProgram "$out/share/instantwallpaper/wallutils.sh" \
+    #   --prefix PATH : ${lib.makeBinPath [ instantConf instantUtils imagemagick ]}
+    #   --prefix PATH : ${lib.makeBinPath [ instantConf instantUtils imagemagick ]}
+    sed -i '2s|^|export\ PATH="${lib.makeBinPath [ instantConf instantUtils imagemagick ]}"\$\{PATH:\+\":\"\}\$PATH|' "$out/share/instantwallpaper/wallutils.sh" 
   '';
 
   meta = with lib; {

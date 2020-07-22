@@ -4,9 +4,7 @@
 , makeWrapper
 , acpi
 , autorandr
-, conky
-, dunst
-, firefox
+, conky , dunst , firefox
 , libnotify
 , lxsession
 , neofetch
@@ -104,7 +102,7 @@ stdenv.mkDerivation {
     # Wrapping PATHS
     wrapProgram "$out/bin/instantautostart" \
       --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify lxsession rox-filer xfce4-power-manager zenity ]} \
-      --run export\ PATH="\"\$(instantdata -d)/bin\""\$\{PATH:\+\':\'\}\$PATH \
+      --run export\ PATH="\$(instantdata -d)/bin"\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -s)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -t)/bin\""\$\{PATH:\+\':\'\}\$PATH
     wrapProgram "$out/bin/instantstartmenu" \
