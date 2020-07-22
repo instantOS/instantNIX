@@ -64,6 +64,7 @@ stdenv.mkDerivation {
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
+    cp config.def.h $out/
   '';
 
   meta = with lib; {

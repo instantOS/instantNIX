@@ -1,5 +1,7 @@
 { lib
 , stdenv
+, youtube-dl
+, slop
 , fetchFromGitHub
 , Paperbash
 , spotify-adblock
@@ -54,6 +56,10 @@ stdenv.mkDerivation {
     substituteInPlace dm/m.sh \
       --replace /opt/instantos/menus "$out/opt/instantos/menus" \
       --replace /opt/instantos/spotify-adblock.so "${spotify-adblock}/lib/spotify-adblock.so"
+    for fl in dm/s*.sh; do
+    substituteInPlace "$fl" \
+      --replace "slop " "${slop}/bin/slop "
+    done
 
     patchShebangs install.sh
   '';
@@ -64,7 +70,7 @@ stdenv.mkDerivation {
     ./install.sh
   '';
 
-  propagatedBuildInputs = [ Paperbash spotify-adblock ];
+  propagatedBuildInputs = [ slop youtube-dl ] ++ [ Paperbash spotify-adblock ];
 
   meta = with lib; {
     description = "Handy menu to access lots of features of instantOS";
