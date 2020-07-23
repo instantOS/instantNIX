@@ -40,8 +40,8 @@ stdenv.mkDerivation {
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
       --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.head (builtins.match "(.*)-.*" defaultTerminal.name)}\"" \
-      --replace /usr/share/instantassist/utils "${instantAssist}/share/instantassist/assists" \
-      --replace /usr/share/instantdotfiles "${instantDotfiles}/share/instantdotfiles/"
+      --replace /usr/share/instantassist/assists/ "${instantAssist}/share/instantassist/assists/" \
+      --replace /usr/share/instantdotfiles/ "${instantDotfiles}/share/instantdotfiles/"
   '';
 
   nativeBuildInputs = [ gnumake ];
@@ -62,7 +62,7 @@ stdenv.mkDerivation {
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
-    cp config.def.h $out/
+    cp config.def.h $out/  # not needed, makes debugging a bit easier
   '';
 
   meta = with lib; {
