@@ -57,8 +57,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "SCOTT-HAMILTON";
     repo = "instantSETTINGS";
-    rev = "370535a376dc506f1c6cdf437e1d7f949b2a66eb";
-    sha256 = "0wyavqapvyg3imlyr3y768c999vx0xpwng3yzqs34si52zwxm734";
+    rev = "d17718ff2d9eedfee093c3d7efa41f24ab13d861";
+    sha256 = "1n8lvz4jn4b0476rb45x5x8ps0041l3nsjvdvkxhkb3sv9s8scwp";
     name = "scotthamilton_instantSettings";
   };
 
