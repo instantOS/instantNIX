@@ -40,7 +40,7 @@ stdenv.mkDerivation {
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
       --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.head (builtins.match "(.*)-.*" defaultTerminal.name)}\"" \
-      --replace /usr/share/instantassist/assists/ "${instantAssist}/share/instantassist/assists/" \
+      --replace /usr/share/instantassist/ "${instantAssist}/share/instantassist/" \
       --replace /usr/share/instantdotfiles/ "${instantDotfiles}/share/instantdotfiles/"
   '';
 
