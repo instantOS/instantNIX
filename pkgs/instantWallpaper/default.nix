@@ -31,8 +31,6 @@ stdenv.mkDerivation {
     })
   ];
 
-  patches = [ ./test.patch ];
-
   sourceRoot = "instantOS_instantWallpaper";
 
   nativeBuildInputs = [ makeWrapper ];

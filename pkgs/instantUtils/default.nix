@@ -66,7 +66,7 @@ stdenv.mkDerivation {
       --replace /usr/share/rangerplugins "${rangerplugins}/share/rangerplugins" \
       --replace /usr/share/instantwidgets "\$(instantdata -wi)/share/instantwidgets" \
       --replace /usr/share/instantwallpaper "\$(instantdata -wa)/share/instantwidgets" \
-      --replace /opt/instantos/menus "\$(instantdata -a)/opt/instantos/menus"
+      --replace /usr/share/instantassist/assists "\$(instantdata -a)/share/instantassist/assists"
     substituteInPlace install.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace instantutils.sh \

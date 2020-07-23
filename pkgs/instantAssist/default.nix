@@ -1,10 +1,10 @@
 { lib
 , stdenv
-, youtube-dl
-, slop
 , fetchFromGitHub
-, Paperbash
+, instantConf
+, slop
 , spotify-adblock
+, youtube-dl
 }:
 stdenv.mkDerivation {
 
@@ -24,44 +24,31 @@ stdenv.mkDerivation {
   postPatch = ''
     substituteInPlace install.sh \
       --replace /usr/bin /bin \
-      --replace /usr/share/paperbash "${Paperbash}/share/paperbash" \
+      --replace /usr/share /share \
       --replace path/to/spotify-adblock.so "${spotify-adblock}/lib/spotify-adblock.so"
-    substituteInPlace dm/b.sh \
-      --replace /usr/bin/dash /bin/sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/p.sh \
-      --replace /usr/bin/dash /bin/sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
     substituteInPlace instantassist \
       --replace "/usr/bin/env dash" /bin/sh \
-      --replace "/opt/instantos/menus" "$out/opt/instantos/menus"
-    substituteInPlace instantdoc \
-      --replace "/usr/bin/env dash" /bin/sh \
-      --replace "/opt/instantos/menus" "$out/opt/instantos/menus"
+      --replace "/usr/share/instantassist" "$out/share/instantassist"
 
-    substituteInPlace dm/rm.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/f.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/k.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/b.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/tb.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/p.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/tw.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus"
-    substituteInPlace dm/m.sh \
-      --replace /opt/instantos/menus "$out/opt/instantos/menus" \
-      --replace /opt/instantos/spotify-adblock.so "${spotify-adblock}/lib/spotify-adblock.so"
-    for fl in dm/s*.sh; do
+    for fl in assists/s*.sh; do
     substituteInPlace "$fl" \
       --replace "slop " "${slop}/bin/slop "
     done
 
+    for fl in assists/*.sh; do
+    substituteInPlace "$fl" \
+      --replace "/usr/bin/env dash" /bin/sh \
+      --replace "#!/usr/bin/dash" /bin/sh \
+      --replace "/usr/share/instantassist" "$out/share/instantassist"
+    done
+
+    for fl in assists/*/*.sh; do
+    substituteInPlace "$fl" \
+      --replace "/usr/share/instantassist" "$out/share/instantassist"
+    done
+
     patchShebangs install.sh
+    patchShebangs cache.sh
   '';
 
   installPhase = ''
@@ -70,7 +57,12 @@ stdenv.mkDerivation {
     ./install.sh
   '';
 
-  propagatedBuildInputs = [ slop youtube-dl ] ++ [ Paperbash spotify-adblock ];
+  propagatedBuildInputs = [
+    instantConf
+    slop
+    spotify-adblock
+    youtube-dl
+  ];
 
   meta = with lib; {
     description = "Handy menu to access lots of features of instantOS";

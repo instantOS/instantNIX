@@ -36,7 +36,7 @@ pkgs.lib.makeExtensible (self: rec {
   rangerplugins = pkgs.callPackage ./pkgs/rangerplugins { };
   spotify-adblock = pkgs.callPackage ./pkgs/spotify-adblock { };
   instantassist = pkgs.callPackage ./pkgs/instantAssist {
-    Paperbash = self.paperbash;
+    instantConf = instantconf;
     spotify-adblock = self.spotify-adblock;
   };
   islide = pkgs.callPackage ./pkgs/islide {

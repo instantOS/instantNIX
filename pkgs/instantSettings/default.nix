@@ -55,11 +55,10 @@ stdenv.mkDerivation {
   version = "unstable";
 
   src = fetchFromGitHub {
-    owner = "SCOTT-HAMILTON";
+    owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "d17718ff2d9eedfee093c3d7efa41f24ab13d861";
-    sha256 = "1n8lvz4jn4b0476rb45x5x8ps0041l3nsjvdvkxhkb3sv9s8scwp";
-    name = "scotthamilton_instantSettings";
+    rev = "278cea86bb1353b98f5665a820a0e947291b14bf";
+    sha256 = "1yjkr3k9kwds97y9lqakhl4pfxy97l3v28brzqvb594kqbx3402q";
   };
 
   nativeBuildInputs = [ makeWrapper ];
@@ -68,7 +67,7 @@ stdenv.mkDerivation {
 
   postPatch = ''
     substituteInPlace settings.sh \
-      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus"
+      --replace "/usr/share/instantassist" "$out/share/instantassist"
   '';
 
   installPhase = ''

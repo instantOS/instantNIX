@@ -35,14 +35,12 @@ stdenv.mkDerivation {
   postPatch = ''
     substituteInPlace config.mk \
       --replace "PREFIX = /usr/local" "PREFIX = $out"
-    substituteInPlace instantwm.c \
-      --replace "cd /usr/bin; ./instantautostart &" "${instantUtils}/bin/instantautostart &"
     substituteInPlace config.def.h \
       --replace "\"pavucontrol\"" "\"${pavucontrol}/bin/pavucontrol\"" \
       --replace "\"rofi\"" "\"${rofi}/bin/rofi\"" \
       --replace "\"urxvt\"" "\"${rxvt_unicode}/bin/urxvt\"" \
       --replace "\"st\"" "\"${defaultTerminal}/bin/${builtins.head (builtins.match "(.*)-.*" defaultTerminal.name)}\"" \
-      --replace /opt/instantos/menus "${instantAssist}/opt/instantos/menus" \
+      --replace /usr/share/instantassist/utils "${instantAssist}/share/instantassist/assists" \
       --replace /usr/share/instantdotfiles "${instantDotfiles}/share/instantdotfiles/"
   '';
 
