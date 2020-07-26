@@ -27,8 +27,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "156da3c29d56f3d85d906bfa2aceb11a56ac2684";
-    sha256 = "13sy12mig88akhcl2xmbn47jxpsdbdfmmi5q073rbyhkdk4h6c6v";
+    rev = "994cd7a107e5794e2a4cbc2a3fe40e90fa1fb93e";
+    sha256 = "0icr1gk9r4kxqmhnl14rjpjmfhakgw9fc76rll48l4ncy34n5kb7";
     name = "instantOS_instantUtils";
   };
 
