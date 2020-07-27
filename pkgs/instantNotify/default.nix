@@ -1,7 +1,9 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, makeWrapper
 , instantMenu
+, sqlite
 }:
 stdenv.mkDerivation {
 
@@ -11,14 +13,12 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantNOTIFY";
-    rev = "master";
+    rev = "10217a9a1bfdfb649fed365092d0ce2597e9aad8";
     sha256 = "1fhh5p5g0dd6fpr2fj5bi7bkkbcdxnydgll2x1xfwrlqpd9nb3bk";
-    name = "instantOS_instantNotify";
   };
 
-  #nativeBuildInputs = [ gnumake ];
-  #buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
-  propagatedBuildInputs = [ instantMenu ];
+  nativeBuildInputs = [ makeWrapper ];
+  propagatedBuildInputs = [ instantMenu sqlite ];
 
   postPatch = ''
     substituteInPlace install.sh \
@@ -30,6 +30,12 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p "$out/bin"
     ./install.sh
+    runHook postInstall
+  '';
+
+  postInstall = ''
+    wrapProgram "$out/bin/instantnotifyctl" \
+      --prefix PATH : ${lib.makeBinPath [ sqlite ]}
   '';
 
   meta = with lib; {
