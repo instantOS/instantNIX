@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>instantWM</h1>
+    <h1>instantNIX</h1>
     <p>instantOS port to Nix</p>
     <img width="300" height="300" src="https://media.githubusercontent.com/media/instantOS/instantLOGO/master/png/nix.png">
 </div>
