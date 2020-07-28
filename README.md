@@ -6,7 +6,7 @@
 
 [InstantOS](https://instantos.github.io/) packages for Nix. **InstaNtixOS** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR). It is a community-maintained meta repository. In contrast to [Nixpkgs](https://github.com/nixos/nixpkgs), packages are built from source (currently, by hand and not always on time). They are not reviewed by any Nixpkgs member.
 
-![InsaNtixOS](https://user-images.githubusercontent.com/11145016/87154656-e2ead300-c2b9-11ea-941d-e743ade87910.png)
+![InsaNtixOS](https://media.githubusercontent.com/media/instantOS/instantLOGO/master/png/nix.png)
 
 # Usage
 
