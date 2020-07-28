@@ -28,6 +28,7 @@ pkgs.lib.makeExtensible (self: rec {
   gufw = with pkgs.python3Packages; pkgs.callPackage ./pkgs/gufw { inherit buildPythonApplication distutils_extra; };
   imenu = pkgs.callPackage ./pkgs/imenu { instantMenu = self.instantmenu; };
   instantconf = pkgs.callPackage ./pkgs/instantConf { };
+  instantlock = pkgs.callPackage ./pkgs/instantLock { instantMenu = self.instantmenu; };
   instantlogo = pkgs.callPackage ./pkgs/instantLogo { };
   instantshell = pkgs.callPackage ./pkgs/instantShell { };
   instantwidgets = pkgs.callPackage ./pkgs/instantWidgets { };
@@ -119,6 +120,7 @@ pkgs.lib.makeExtensible (self: rec {
         self.instantconf
         self.instantdata
         self.instantdotfiles
+        self.instantlock
         self.instantlogo
         self.instantmenu
         self.instantnotify
