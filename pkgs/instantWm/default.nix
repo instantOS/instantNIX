@@ -12,6 +12,7 @@
 , instantAssist
 , instantUtils
 , instantDotfiles
+, wmconfig ? null
 , extraPatches ? []
 , defaultTerminal ? st
 }:
@@ -30,7 +31,9 @@ stdenv.mkDerivation {
 
   patches = [ ] ++ extraPatches;
 
-  postPatch = ''
+  postPatch =  
+  ( if builtins.isPath wmconfig then "cp ${wmconfig} config.def.h\n" else "" ) + 
+  ''
     substituteInPlace config.mk \
       --replace "PREFIX = /usr/local" "PREFIX = $out"
     substituteInPlace config.def.h \
@@ -60,7 +63,7 @@ stdenv.mkDerivation {
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
-    cp config.def.h $out/  # not needed, makes debugging a bit easier
+    mkdir $out/debug/ && cp config.def.h $out/debug/  # not needed, makes debugging a bit easier
   '';
 
   meta = with lib; {
