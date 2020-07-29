@@ -56,6 +56,10 @@ stdenv.mkDerivation {
   ];
 
   postPatch = ''
+    for fl in *.sh programs/ifeh; do
+    substituteInPlace "$fl" \
+      --replace "#!/usr/bin/dash" "#!/bin/sh"
+    done
     substituteInPlace programs/appmenu \
       --replace "#!/usr/bin/dash" "#!/bin/sh" \
       --replace "/usr/share/instantdotfiles/rofi/appmenu.rasi" "tmp_placeholder" \
@@ -71,6 +75,7 @@ stdenv.mkDerivation {
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
+    patchShebangs *.sh
   '';
 
   installPhase = ''

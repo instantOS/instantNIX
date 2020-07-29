@@ -135,6 +135,7 @@ pkgs.lib.makeExtensible (self: rec {
         self.paperbash
         self.rangerplugins
         self.spotify-adblock
+        self.pkgs.dash
     ];
   };
 } )

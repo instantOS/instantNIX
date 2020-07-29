@@ -1,6 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, dash
 , instantConf
 , slop
 , spotify-adblock
@@ -58,6 +59,7 @@ stdenv.mkDerivation {
   '';
 
   propagatedBuildInputs = [
+    dash
     instantConf
     slop
     spotify-adblock
