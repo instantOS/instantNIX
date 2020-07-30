@@ -104,8 +104,8 @@ pkgs.lib.makeExtensible (self: rec {
     Paperbash = self.paperbash;
     rangerplugins = self.rangerplugins;
   };
-  instantixos = pkgs.buildEnv {
-    name = "instantixos";
+  instantnix = pkgs.buildEnv {
+    name = "instantnix";
     meta = with pkgs.lib; {
       description = "instantOS metapackage for Nix";
       license = licenses.mit;
