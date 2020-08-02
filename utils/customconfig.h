@@ -132,10 +132,10 @@ static char instantmenumon[2] = "0"; /* component of instantmenucmd, manipulated
 static const char *instantmenucmd[] = {"instantmenu_run", NULL};
 static const char *smartcmd[] = {"instantmenu_smartrun", NULL};
 static const char *instantmenustcmd[] = {"instantmenu_run_st", NULL};
-static const char *termcmd[] = {"st", NULL};
+static const char *termcmd[] = {".config/instantos/default/terminal", NULL};
 static const char *quickmenucmd[] = {"quickmenu", NULL};
 static const char *instantassistcmd[] = {"instantassist", NULL};
-static const char *nautiluscmd[] = {"nautilus", NULL};
+static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
 static const char *slockcmd[] = {"ilock", NULL};
 static const char *langswitchcmd[] = {"ilayout", NULL};
 static const char *oslockcmd[] = {"instantlock", "-o", NULL};
@@ -144,11 +144,11 @@ static const char *iswitchcmd[] = {"iswitch", NULL};
 static const char *instantswitchcmd[] = {"rofi", "-show", "window", "-kb-row-down", "Alt+Tab,Down", "-kb-row-up", "Alt+Ctrl+Tab,Up", "-kb-accept-entry", "!Alt_L,!Alt+Tab,Return", "-me-select-entry", "", "-me-accept-entry", "MousePrimary", NULL};
 static const char *caretinstantswitchcmd[] = {"rofi", "-show", "window", "-kb-row-down", "Alt+Tab,Down", "-kb-row-up", "Alt+Ctrl+Tab,Up", "-kb-accept-entry", "!Alt_L,!Alt+Tab,Return", "-me-select-entry", "", "-me-accept-entry", "MousePrimary", "-theme", "/usr/share/instantdotfiles/rofi/appmenu.rasi", NULL};
 static const char *onboardcmd[] = {"onboard", NULL};
-static const char *instantshutdowncmd[] = {"killall", "instantwm", NULL};
-static const char *systemmonitorcmd[] = {"mate-system-monitor", NULL};
+static const char *instantshutdowncmd[] = {"instantshutdown", NULL};
+static const char *systemmonitorcmd[] = {".config/instantos/default/systemmonitor", NULL};
 static const char *notifycmd[] = {"instantnotify", NULL};
 static const char *rangercmd[] = { "urxvt", "-e", "ranger", NULL };
-static const char *panther[] = { "appmenu", NULL};
+static const char *panther[] = { ".config/instantos/default/appmenu", NULL};
 static const char *controlcentercmd[] = { "instantsettings", NULL};
 static const char *pavucontrol[] = { "pavucontrol", NULL};
 static const char *instantsettings[] = { "instantsettings", NULL};
@@ -161,7 +161,7 @@ static const char  *fscrotcmd[] = { "/usr/share/instantassist/assists/s/m.sh", N
 static const char  *clipscrotcmd[] = { "/usr/share/instantassist/assists/s/c.sh", NULL };
 static const char  *fclipscrotcmd[] = { "/usr/share/instantassist/assists/s/f.sh", NULL };
 
-static const char  *firefoxcmd[] = { "firefox", NULL };
+static const char  *firefoxcmd[] = { ".config/instantos/default/browser", NULL };
 
 static const char *playernext[] = { "playerctl", "next", NULL};
 static const char *playerprevious[] = { "playerctl", "previous", NULL};
@@ -217,6 +217,7 @@ static Key dkeys[] = {
 	{0, XK_Tab, spawn, {.v = caretinstantswitchcmd} },
 	{0, XK_c, spawn, {.v = codecmd} },
 	{0, XK_y, spawn, {.v = smartcmd} },
+	{0, XK_v, spawn, {.v = quickmenucmd} },
 
 	{0, XK_h,   viewtoleft,     {0}},
 	{0, XK_l,  viewtoright,    {0}},
@@ -265,6 +266,7 @@ static Key keys[] = {
 	{MODKEY, XK_minus, spawn, {.v = instantmenustcmd}},
 	{MODKEY, XK_x, spawn, {.v = instantswitchcmd}},
 	{Mod1Mask, XK_Tab, spawn, {.v = iswitchcmd}},
+	{MODKEY|Mod1Mask|ControlMask|ShiftMask, XK_Tab, alttabfree, {0}},
 	{MODKEY, XK_dead_circumflex, spawn, {.v = caretinstantswitchcmd}},
 	{MODKEY | ControlMask, XK_l, spawn, {.v = slockcmd}},
 	{MODKEY | ControlMask, XK_h, hidewin, {0}},
@@ -366,7 +368,7 @@ static Key keys[] = {
 
 	{MODKEY|ShiftMask, XK_Print, spawn, {.v = fscrotcmd}},
 	{MODKEY, XK_Print, spawn, {.v = scrotcmd}},
-	{MODKEY|ControlMask, XK_Print, spawn, SHCMD("c.sh")}, //{.v = clipscrotcmd}},
+	{MODKEY|ControlMask, XK_Print, spawn, {.v = clipscrotcmd}},
 	{MODKEY|Mod1Mask, XK_Print, spawn, {.v = fclipscrotcmd}},
 
 	{ MODKEY, XK_o, winview, {0} },
