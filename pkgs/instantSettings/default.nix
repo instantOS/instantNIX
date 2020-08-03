@@ -57,8 +57,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "3ac32a77b616048f0facd9800d1c0c4c85679771";
-    sha256 = "18v7146ylan4lk0ra12xa1n6lb7dbk0cpkjhmzw69yaa8wl4v243";
+    rev = "46a2a2de7192abee98f6c37340af23079da2da1d";
+    sha256 = "1fhbn5v2p8hfxjxvrx3v6sfx690kgzx765f69s463mb0pi75bm9h";
   };
 
   nativeBuildInputs = [ makeWrapper ];
