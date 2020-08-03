@@ -132,7 +132,7 @@ static char instantmenumon[2] = "0"; /* component of instantmenucmd, manipulated
 static const char *instantmenucmd[] = {"instantmenu_run", NULL};
 static const char *smartcmd[] = {"instantmenu_smartrun", NULL};
 static const char *instantmenustcmd[] = {"instantmenu_run_st", NULL};
-static const char *termcmd[] = {".config/instantos/default/terminal", NULL};
+static const char *termcmd[] = {"kitty", NULL};
 static const char *quickmenucmd[] = {"quickmenu", NULL};
 static const char *instantassistcmd[] = {"instantassist", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
@@ -150,6 +150,7 @@ static const char *notifycmd[] = {"instantnotify", NULL};
 static const char *rangercmd[] = { "urxvt", "-e", "ranger", NULL };
 static const char *panther[] = { ".config/instantos/default/appmenu", NULL};
 static const char *controlcentercmd[] = { "instantsettings", NULL};
+static const char *displaycmd[] = { "instantdisper", NULL};
 static const char *pavucontrol[] = { "pavucontrol", NULL};
 static const char *instantsettings[] = { "instantsettings", NULL};
 static const char  *clickcmd[] = { "autoclicker", NULL };
@@ -160,6 +161,7 @@ static const char  *scrotcmd[] = { "/usr/share/instantassist/assists/s/s.sh", NU
 static const char  *fscrotcmd[] = { "/usr/share/instantassist/assists/s/m.sh", NULL };
 static const char  *clipscrotcmd[] = { "/usr/share/instantassist/assists/s/c.sh", NULL };
 static const char  *fclipscrotcmd[] = { "/usr/share/instantassist/assists/s/f.sh", NULL };
+static const char  *flamescrot[] = { "flameshot", "gui", NULL };
 
 static const char  *firefoxcmd[] = { ".config/instantos/default/browser", NULL };
 
@@ -273,6 +275,7 @@ static Key keys[] = {
 	{MODKEY | Mod1Mask | ControlMask, XK_h, unhideall, {0}},
 	{MODKEY | Mod1Mask | ControlMask, XK_l, spawn, {.v = langswitchcmd}},
 	{MODKEY, XK_Return, spawn, {.v = termcmd}},
+	{ControlMask|Mod1Mask, XK_t, spawn, {.v = termcmd}},
 	{MODKEY, XK_v, spawn, {.v = quickmenucmd}},
 	{MODKEY, XK_b, togglebar, {0}},
 	{MODKEY, XK_j, focusstack, {.i = +1}},
@@ -336,6 +339,7 @@ static Key keys[] = {
 	{MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{MODKEY, XK_p, setlayout, {0}},
+	{MODKEY|ShiftMask, XK_p, spawn, {.v = displaycmd }},
 	{MODKEY | ShiftMask, XK_space, spacetoggle, {0}},
 	{MODKEY, XK_0, view, {.ui = ~0}},
 	{MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
@@ -368,6 +372,7 @@ static Key keys[] = {
 
 	{MODKEY|ShiftMask, XK_Print, spawn, {.v = fscrotcmd}},
 	{MODKEY, XK_Print, spawn, {.v = scrotcmd}},
+	{0, XK_Print, spawn, {.v = flamescrot}},
 	{MODKEY|ControlMask, XK_Print, spawn, {.v = clipscrotcmd}},
 	{MODKEY|Mod1Mask, XK_Print, spawn, {.v = fclipscrotcmd}},
 
