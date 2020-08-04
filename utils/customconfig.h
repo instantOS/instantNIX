@@ -89,7 +89,7 @@ static const Rule rules[] = {
 	{"Onboard", NULL,     NULL,       0,                1,           -1},
 	{"floatmenu", NULL,     NULL,        0,            1,           -1},
 	{"Welcome.py", NULL,     NULL,        0,            1,           -1},
-    {"xpad", NULL,     NULL,        0,            1,           -1},
+	{"xpad", NULL,     NULL,        0,            1,           -1},
 	{"ROX-Filer", NULL,     NULL,        0,            0,           -1},
 };
 
@@ -133,7 +133,7 @@ static char instantmenumon[2] = "0"; /* component of instantmenucmd, manipulated
 static const char *instantmenucmd[] = {"instantmenu_run", NULL};
 static const char *smartcmd[] = {"instantmenu_smartrun", NULL};
 static const char *instantmenustcmd[] = {"instantmenu_run_st", NULL};
-static const char *termcmd[] = {"kitty", NULL};
+static const char *termcmd[] = {".config/instantos/default/terminal", NULL};
 static const char *quickmenucmd[] = {"quickmenu", NULL};
 static const char *instantassistcmd[] = {"instantassist", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
@@ -277,6 +277,7 @@ static Key keys[] = {
 	{MODKEY | Mod1Mask | ControlMask, XK_l, spawn, {.v = langswitchcmd}},
 	{MODKEY, XK_Return, spawn, {.v = termcmd}},
 	{ControlMask|Mod1Mask, XK_t, spawn, {.v = termcmd}},
+	{MODKEY, XK_f, spawn, {.v = firefoxcmd} },
 	{MODKEY, XK_v, spawn, {.v = quickmenucmd}},
 	{MODKEY, XK_b, togglebar, {0}},
 	{MODKEY, XK_j, focusstack, {.i = +1}},
@@ -443,3 +444,4 @@ static Button buttons[] = {
 	{ ClkStartMenu,         ShiftMask,      Button1,        toggleprefix,   {0}},
 	{ ClkStartMenu,         0,              Button3,        spawn,          {.v = quickmenucmd}},
 };
+
