@@ -15,8 +15,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantAssist";
-    rev = "8dfcd8ac09fda9f3e4a55db89c1240be30b84584";
-    sha256 = "1xgw9261g5x0g93g1imgm9prc2rrgafr5rp7a3qf13akh1c10byk";
+    rev = "cd72d6391d15584204c51fd66c4ba445522c7cdc";
+    sha256 = "1dyqjabhspp80r378xc2pkgln38wc0g9nr4p6fv85s33xv64y0hc";
     name = "instantOS_instantAssist";
   };
 
@@ -24,11 +24,10 @@ stdenv.mkDerivation {
 
   postPatch = ''
     substituteInPlace install.sh \
-      --replace /usr/bin /bin \
+      --replace "\"/usr/bin" "\"/bin" \
       --replace /usr/share /share \
       --replace path/to/spotify-adblock.so "${spotify-adblock}/lib/spotify-adblock.so"
     substituteInPlace instantassist \
-      --replace "/usr/bin/env dash" /bin/sh \
       --replace "/usr/share/instantassist" "$out/share/instantassist"
 
     for fl in assists/s*.sh; do
@@ -38,8 +37,6 @@ stdenv.mkDerivation {
 
     for fl in assists/*.sh; do
     substituteInPlace "$fl" \
-      --replace "/usr/bin/env dash" /bin/sh \
-      --replace "#!/usr/bin/dash" /bin/sh \
       --replace "/usr/share/instantassist" "$out/share/instantassist"
     done
 
