@@ -33,6 +33,8 @@ stdenv.mkDerivation {
 
   sourceRoot = "instantOS_instantWallpaper";
 
+  patches = [ ./set-instantix-overlay.patch ];
+
   nativeBuildInputs = [ makeWrapper ];
 
   propagatedBuildInputs = [

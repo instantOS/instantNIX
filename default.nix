@@ -31,6 +31,7 @@ pkgs.lib.makeExtensible (self: rec {
   instantconf = pkgs.callPackage ./pkgs/instantConf { };
   instantlock = pkgs.callPackage ./pkgs/instantLock {
     instantMenu = self.instantmenu;
+    argtable3 = argtable3;
   };
   instantlogo = pkgs.callPackage ./pkgs/instantLogo { };
   instantshell = pkgs.callPackage ./pkgs/instantShell { };
