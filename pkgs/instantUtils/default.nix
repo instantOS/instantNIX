@@ -8,6 +8,7 @@
 , libnotify
 , lxsession
 , neofetch
+, networkmanagerapplet
 , nitrogen
 , pciutils
 , picom
@@ -43,6 +44,7 @@ stdenv.mkDerivation {
     libnotify
     lxsession
     neofetch
+    networkmanagerapplet
     nitrogen
     pciutils
     picom
@@ -104,7 +106,17 @@ stdenv.mkDerivation {
   postInstall = ''
     # Wrapping PATHS
     wrapProgram "$out/bin/instantautostart" \
-      --prefix PATH : ${lib.makeBinPath [ autorandr conky dunst libnotify lxsession rox-filer xfce4-power-manager zenity ]} \
+      --prefix PATH : ${lib.makeBinPath [
+          autorandr
+          conky
+          dunst
+          libnotify
+          lxsession
+          networkmanagerapplet
+          rox-filer
+          xfce4-power-manager
+          zenity
+        ]} \
       --run export\ PATH="\$(instantdata -d)/bin"\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -s)/bin\""\$\{PATH:\+\':\'\}\$PATH \
       --run export\ PATH="\"\$(instantdata -t)/bin\""\$\{PATH:\+\':\'\}\$PATH
@@ -120,6 +132,8 @@ stdenv.mkDerivation {
       --prefix PATH : ${lib.makeBinPath [ picom ]}
     wrapProgram "$out/bin/iswitch" \
       --prefix PATH : ${lib.makeBinPath [ wmctrl ]}
+    wrapProgram "$out/bin/instantstatus" \
+      --prefix PATH : ${lib.makeBinPath [ acpi ]}
   '';
 
   meta = with lib; {
