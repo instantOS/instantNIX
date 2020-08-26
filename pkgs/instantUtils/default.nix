@@ -1,6 +1,7 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, fetchurl
 , makeWrapper
 , acpi
 , autorandr
@@ -20,7 +21,59 @@
 , xfce4-power-manager
 , zenity
 }:
-stdenv.mkDerivation {
+let
+  thanks = stdenv.mkDerivation {
+    pname = "instantOS-thanks";
+    version = "unstable";
+
+    src = fetchurl {
+      url = "https://raw.githubusercontent.com/instantOS/instantLOGO/master/description/thanks.txt";
+      sha256 = "13wrnsas1ji8pfvzsphb6jpjhfhg1w1cfg94z0a55xx6bcrnsffp";
+    };
+    sourceRoot = ".";
+    unpackCmd =  "cp $curSrc thanks.txt";
+
+    installPhase = ''
+      ls -lh
+      install -Dm 644 thanks.txt "$out/thanks.txt";
+    '';
+
+    meta = with lib; {
+      description = "Thanks file";
+      license = licenses.mit;
+      platforms = platforms.all;
+    };
+  };
+  keybindings = stdenv.mkDerivation {
+    pname = "instantOS-keybindings";
+    version = "unstable";
+
+    src = fetchurl {
+      url = "https://raw.githubusercontent.com/instantOS/instantos.github.io/master/youtube/hotkeys.md";
+      sha256 = "0cx64y8yhammd1h2bhr31gg6y0081s1xhkya2vp49ipmsdb4wr04";
+    };
+    sourceRoot = ".";
+    unpackCmd =  "cp $curSrc hotkeys.md";
+
+    postPatch = ''
+      cat hotkeys.md | \
+        sed 's/^\([^|#]\)/    \1/g'  | \
+        sed 's/^##*[ ]*/ /g' > hotkeys.md
+    '';
+
+    installPhase = ''
+      ls -lh
+      install -Dm 644 hotkeys.md "$out/hotkeys.md";
+    '';
+
+    meta = with lib; {
+      description = "Hotkeys file";
+      license = licenses.mit;
+      platforms = platforms.all;
+    };
+  };
+in
+stdenv.mkDerivation rec {
 
   pname = "instantUtils";
   version = "unstable";
@@ -28,8 +81,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "6e9b75f34ec7aedd746f72b450fde6eb36a3e425";
-    sha256 = "0by0d1v52431x449vk39l0kg7hx0fa1fp59nkqx750lf44lppgv4";
+    rev = "dafa04ff5ba574694eaec13747487e58fac4c2e8";
+    sha256 = "05ps1ccx40v3l3d8plf8g8csxlmm19r6gshb5h9yzxqywqrs9wl7";
     name = "instantOS_instantUtils";
   };
 
@@ -55,6 +108,9 @@ stdenv.mkDerivation {
     wmctrl
     xfce4-power-manager
     zenity
+
+    thanks
+    keybindings
   ];
 
   postPatch = ''
@@ -82,21 +138,30 @@ stdenv.mkDerivation {
 
   installPhase = ''
     runHook preInstall
-    install -Dm 555 autostart.sh $out/bin/instantautostart
-    install -Dm 555 status.sh $out/bin/instantstatus
-    install -Dm 555 monitor.sh $out/bin/instantmonitor
+    install -Dm 555 autostart.sh "$out/bin/instantautostart"
+    install -Dm 555 status.sh "$out/bin/instantstatus"
+    install -Dm 555 monitor.sh "$out/bin/instantmonitor"
 
-    install -Dm 555 instantutils.sh $out/bin/instantutils
-    install -Dm 555 installinstantos.sh $out/bin/installinstantos
+    install -Dm 555 instantutils.sh "$out/bin/instantutils"
+    install -Dm 555 installinstantos.sh "$out/bin/installinstantos"
 
-    mkdir -p $out/share/instantutils
+    mkdir -p "$out/share/instantutils"
     chmod +x *.sh
-    mv *.sh $out/share/instantutils
-    chmod +x programs/*
-    mv programs/* $out/bin
+    mv *.sh "$out/share/instantutils"
 
-    mkdir -p $out/share/applications
-    mv desktop/* $out/share/applications
+    chmod +x setup/*
+    mv setup "$out/share/instantutils"
+    ln -s "${thanks}/thanks.txt" "$out/share/instantutils/thanks.txt"
+    mv mirrors "$out/share/instantutils"
+    echo "${version}" > "$out/share/instantutils/version"
+
+    mkdir -p "$out/share/applications"
+    mv desktop/* "$out/share/applications"
+
+    chmod +x programs/*
+    mv programs/* "$out/bin"
+
+    ln -s "${keybindings}/hotkeys.md" "$out/share/instantutils/keybinds"
 
     mkdir -p "$out/etc/X11/xorg.conf.d"
     mv xorg/* "$out/etc/X11/xorg.conf.d"
