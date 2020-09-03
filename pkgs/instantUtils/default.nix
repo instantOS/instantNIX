@@ -27,7 +27,7 @@ let
     version = "unstable";
 
     src = fetchurl {
-      url = "https://github.com/instantOS/instantLOGO/blob/ae4626d6e67d078657389c290db8c29d234f8250/description/thanks.txt";
+      url = "https://raw.githubusercontent.com/instantOS/instantLOGO/ae4626d6e67d078657389c290db8c29d234f8250/description/thanks.txt";
       sha256 = "0h65x0g4wglkrw457sid0ycjc09pq1knicx9fzn35q9wr77yqkki";
     };
     sourceRoot = ".";
