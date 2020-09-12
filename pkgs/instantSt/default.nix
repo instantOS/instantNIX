@@ -1,5 +1,5 @@
 { stdenv, fetchFromGitHub, pkgconfig, writeText, libX11, ncurses
-, libXft, harfbuzz, conf ? null, patches ? [], extraLibs ? []}:
+, libXft, harfbuzz, firacodenerd, conf ? null, patches ? [], extraLibs ? []}:
 
 with stdenv.lib;
 
@@ -21,7 +21,7 @@ stdenv.mkDerivation rec {
   postPatch = optionalString (conf!=null) "cp ${configFile} config.def.h";
 
   nativeBuildInputs = [ pkgconfig ncurses ];
-  buildInputs = [ libX11 libXft harfbuzz ] ++ extraLibs;
+  buildInputs = [ libX11 libXft harfbuzz firacodenerd ] ++ extraLibs;
 
   installPhase = ''
     TERMINFO=$out/share/terminfo make install PREFIX=$out
