@@ -57,8 +57,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "f4a41c581131d0dcee217beea6d90b97d51c537f";
-    sha256 = "0j02w1kssf38gyvjqr5iabq5izqs06rb6pdk9da8gdizfjxcz1wk";
+    rev = "efaffbf4ceef92907ec2fdb6419e40fd877ed066";
+    sha256 = "18fk3gkf5zbqys0x42agzh4bkn95zccwbdbz6aa89ziwvs6zx7da";
   };
 
   nativeBuildInputs = [ makeWrapper ];
@@ -85,7 +85,7 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "Simple settings app for instant-OS";
-    license = licenses.mit;
+    license = licenses.gpl2;
     homepage = "https://github.com/instantOS/instantSETTINGS";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;

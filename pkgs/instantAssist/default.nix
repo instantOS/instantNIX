@@ -65,7 +65,7 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "Handy menu to access lots of features of instantOS";
-    license = licenses.mit;
+    license = licenses.gpl2;
     homepage = "https://github.com/instantOS/instantASSIST";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;

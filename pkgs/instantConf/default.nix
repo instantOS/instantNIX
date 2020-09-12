@@ -30,7 +30,7 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "instantOS Conf";
-    license = licenses.mit;
+    license = licenses.gpl2;
     homepage = "https://github.com/instantOS/instantWM";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;
