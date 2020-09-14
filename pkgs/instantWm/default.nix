@@ -63,14 +63,17 @@ stdenv.mkDerivation {
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
-    mkdir $out/debug/ && cp config.def.h $out/debug/  # not needed, makes debugging a bit easier
   '';
 
   meta = with lib; {
     description = "Window manager of instantOS.";
     license = licenses.mit;
     homepage = "https://github.com/instantOS/instantWM";
-    maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
+    maintainers = [ 
+        stdenv.lib.maintainers.shamilton
+        "con-f-use <con-f-use@gmx.net>"
+        "paperbenni <instantos@paperbenni.xyz>"
+    ];
     platforms = platforms.linux;
   };
 }
