@@ -7,7 +7,11 @@
 -------
 [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX)
 
-[InstantOS](https://instantos.github.io/) packages for Nix. **InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR). It is a community-maintained meta repository. In contrast to [Nixpkgs](https://github.com/nixos/nixpkgs), packages are built from source (currently, by hand and not always on time). They are not reviewed by any Nixpkgs member.
+[InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
+
+**InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR). 
+It is a community-maintained meta repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
+Please not, that our parent project instantOS is still in beta phase, and we are even more so.
 
 # Usage
 
