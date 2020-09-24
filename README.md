@@ -9,9 +9,11 @@
 
 [InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
 
+[![InstantOS beta5 preview](https://img.youtube.com/vi/zqcEv3bdIAM/0.jpg)](http://www.youtube.com/watch?v=zqcEv3bdIAM)
+
 **InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR). 
 It is a community-maintained meta repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
-Please not, that our parent project instantOS is still in beta phase, and we are even more so.
+Please note, that our parent project instantOS is still in beta phase, and we are even more so.
 
 # Usage
 
