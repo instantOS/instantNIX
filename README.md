@@ -36,7 +36,7 @@ See an example in `./utils/xinitrc`.
 Some related resources:
  - [dwm on ubuntu](https://cannibalcandy.wordpress.com/2012/04/26/installing-and-configuring-dwm-under-ubuntu/)
  - [dwm on lightdm](https://blkct.wordpress.com/2017/06/16/how-to-start-dwm-from-lightdm/)
- - An example [NixOS configuration](https://github.com/instantOS/instantNIX/blob/master/utils/configuration.nix) ([without NUR](https://github.com/instantOS/instantNIX/blob/master/utils/configuration.nix))
+ - An example [NixOS configuration](./utils/configuration.nix) ([without NUR](./utils/configuration.nix))
 
 Note: Some additional configuration steps such as setting the correct UID for instantLOCK might be required.
 
