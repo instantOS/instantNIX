@@ -18,15 +18,15 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "instantOS";
       repo = "instantWALLPAPER";
-      rev = "b2d76ecf683dfbe387e9692e3055c73a615ff223";
-      sha256 = "0i7zm02m44c3qgnjisp0xn6v10yyw2zzvzw28ay355kdzpc8s7dr";
+      rev = "be7f80fee19ed377effb5ecb59b2526fbdb25b99";
+      sha256 = "0g4x5sz94l4j5xsrmka2iw56j5a91fi5hajah9g05cj3361gihkm";
       name = "instantOS_instantWallpaper";
     }) 
     (fetchFromGitHub {
       owner = "instantOS";
       repo = "instantLOGO";
-      rev = "4d9485c4e2ffe2c7f8b73bdfa1a3bc1a548e48e2";
-      sha256 = "0hvk5y0r46ykvmj93qnks4pvmgf2a9g8p6dq1wlyf71g0y5yg6m0";
+      rev = "2658f963ff8b124e18dddc03165b5998388665fd";
+      sha256 = "01y0bkhaqjn5kwybcaaprx5qrdrvr9kv83982hgjks066g91b5b2";
       name = "instantOS_instantLogo";
     })
   ];

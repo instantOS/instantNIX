@@ -72,6 +72,8 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
 /* ffox, programming1, term, music, steam, folder, play icon, document, message  */
 static const char *tagsalt[] = { "", "{}", "$", "", "", "", "", "", "" };
 
+static const char scratchpadname[] = "instantscratchpad";
+
 static const char *upvol[] = {"/usr/share/instantassist/utils/p.sh", "+", NULL};
 static const char *downvol[] = {"/usr/share/instantassist/utils/p.sh", "-", NULL};
 static const char *mutevol[] = {"/usr/share/instantassist/utils/p.sh", "m", NULL};
@@ -92,7 +94,9 @@ static const Rule rules[] = {
 	{"Pamac-installer", NULL,     NULL,        0,            1,           -1},
 	{"xpad", NULL,     NULL,        0,            1,           -1},
 	{"instantfloat", NULL,     NULL,        0,            2,           -1},
+	{scratchpadname, NULL,     NULL,        0,            4,           -1},
 	{"kdeconnect.daemon", NULL,     NULL,        0,            3,           -1},
+	{"Panther", NULL,     NULL,        0,            3,           -1},
 	{"org-wellkord-globonote-Main", NULL,     NULL,        0,            1,           -1},
 	{"Peek", NULL,     NULL,        0,            1,           -1},
 	{"ROX-Filer", NULL,     NULL,        0,            0,           -1},
@@ -140,10 +144,12 @@ static const char *clipmenucmd[] = {"instantclipmenu", NULL};
 static const char *smartcmd[] = {"instantmenu_smartrun", NULL};
 static const char *instantmenustcmd[] = {"instantmenu_run_st", NULL};
 static const char *termcmd[] = {".config/instantos/default/terminal", NULL};
+static const char *termscratchcmd[] = {".config/instantos/default/terminal", "-c", scratchpadname, NULL};
 static const char *quickmenucmd[] = {"quickmenu", NULL};
 static const char *instantassistcmd[] = {"instantassist", NULL};
 static const char *instantrepeatcmd[] = {"instantrepeat", NULL};
 static const char *instantpacmancmd[] = {"instantpacman", NULL};
+static const char *instantsharecmd[] = {"instantshare", "snap", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
 static const char *slockcmd[] = {"ilock", NULL};
 static const char *langswitchcmd[] = {"ilayout", NULL};
@@ -273,6 +279,7 @@ static Key keys[] = {
 	{MODKEY, XK_a, spawn, {.v = instantassistcmd} },
 	{MODKEY|ShiftMask, XK_a, spawn, {.v = instantrepeatcmd} },
 	{MODKEY|ControlMask, XK_i, spawn, {.v = instantpacmancmd} },
+	{MODKEY|ShiftMask, XK_i, spawn, {.v = instantsharecmd} },
 	{MODKEY, XK_w, setoverlay, {0} },
 	{MODKEY | ControlMask, XK_w, createoverlay, {0} },
 	{MODKEY, XK_g, spawn, {.v = notifycmd} },
