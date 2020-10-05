@@ -17,10 +17,16 @@ Please note, that our parent project instantOS is still in beta phase, and we ar
 
 # Usage
 
-Detailed instructions on how to install and use instantOS tools with Nix or NixOS can be found in the [instantNix Wiki](https://github.com/instantOS/instantNIX/wiki). In this Readme we only give you a very quick overview.
+Detailed instructions on how to install and use instantOS tools with Nix or NixOS can be found in the [instantNix Wiki](https://github.com/instantOS/instantNIX/wiki).
+In this Readme we only give you a very quick overview.
+Currently there are two methods, installing from the Nix User Repository (NUR) or cloning the repo.
 
-[Isntall Nix](https://nixos.org/nix/manual/#chap-installation) (`curl -L https://nixos.org/nix/install | sh`), 
-then clone this repository and inside it run:
+In both cases, first [isntall Nix](https://nixos.org/nix/manual/#chap-installation) (`curl -L https://nixos.org/nix/install | sh`) on your system.
+
+# Istallation from Clone
+
+Clone this repository and change direcotry inside it.
+From there, run:
 
 ```nix
 nix-env -iA instantnix -f default.nix --arg pkgs 'import <nixpkgs> {}'
@@ -39,8 +45,9 @@ Some related resources:
  - An example [NixOS configuration](./utils/configuration.nix) ([without NUR](./utils/configuration.nix))
 
 Note: Some additional configuration steps such as setting the correct UID for instantLOCK might be required.
+Permissions are an issue on some systems.
 
-# Usage via NUR
+# Installation via NUR
 
 Accessing NUR can be done easily. Just add the following to `~/.config/nixpkgs/config.nix`:
 
@@ -59,8 +66,9 @@ Accessing NUR can be done easily. Just add the following to `~/.config/nixpkgs/c
 Then you can add `nur.repos.instantos.PACKAGE_NAME` to your `configuration.nix` or install **InstantOs** packages via:
 
 ```console
-$ nix-env -f '<nixpkgs>' -iA nur.repos.instantos.PACKAGE_NAME
+$ nix-env -f '<nixpkgs>' -iA nur.repos.instantos.PACKAGE_NAME  # "nur.repos.instantos.instantnix" for everything
 ```
+
 # Faster installation with cachix
 
 You may want to install cachix and take advantage of the build artefact caching with:
@@ -69,5 +77,8 @@ You may want to install cachix and take advantage of the build artefact caching 
 $ nix-env -iA cachix -f https://cachix.org/api/v1/install
 $ cachix use instantos
 ```
+
+That way Nix does not compile as much from source and rather uses pre-compiled
+packages from [cachix](https://cachix.org).
 
 [![Cachix Cache](https://img.shields.io/badge/cachix-instantos-blue.svg)](https://instantos.cachix.org)
