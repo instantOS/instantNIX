@@ -226,6 +226,10 @@ static Xcommand commands[] = {
 	{ "tag",        view,      { .ui = 2 }, 3 },
 	{ "animated",   toggleanimated,      { .ui = 2 }, 1 },
 	{ "alttab",   alttabfree,      { .ui = 2 }, 1 },
+	{ "layout",   commandlayout,      { .ui = 0 }, 1 },
+	{ "prefix",   commandprefix,      { .ui = 1 }, 1 },
+	{ "alttag",   togglealttag,      { .ui = 0 }, 1 },
+	{ "hidetags",   toggleshowtags,      { .ui = 0 }, 1 },
 };
 
 static Key dkeys[] = {
@@ -316,7 +320,7 @@ static Key keys[] = {
 	{MODKEY|ShiftMask, XK_Up, uppress, {0}},
 	{MODKEY|ControlMask, XK_j, pushdown, {0} },
 	{MODKEY|ControlMask, XK_k, pushup, {0} },
-	{MODKEY|Mod1Mask, XK_s, togglealttag, {0} },
+	{MODKEY|Mod1Mask, XK_s, togglealttag, { .ui = 2 } },
 	{MODKEY|ShiftMask|Mod1Mask, XK_s, toggleanimated, { .ui = 2 } },
 	{MODKEY|ControlMask,                    XK_s,      togglesticky,   {0} },
 	{MODKEY|ShiftMask,                    XK_s,      createscratchpad, {0}},
@@ -326,7 +330,7 @@ static Key keys[] = {
 	{MODKEY | ShiftMask | Mod1Mask, XK_d, toggledoubledraw, {0} },
 	{MODKEY|ShiftMask, XK_w, warpfocus, {0} },
 	{MODKEY|Mod1Mask, XK_w, centerwindow, {0} },
-	{MODKEY|ShiftMask|ControlMask, XK_s, toggleshowtags, {0} },
+	{MODKEY|ShiftMask|ControlMask, XK_s, toggleshowtags, { .ui = 2 } },
 	{MODKEY, XK_i, incnmaster, {.i = +1}},
 	{MODKEY, XK_d, incnmaster, {.i = -1}},
 	{MODKEY, XK_h, setmfact, {.f = -0.05}},
