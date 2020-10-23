@@ -23,15 +23,15 @@ Detailed instructions on how to install and use instantOS tools with Nix or NixO
 In this Readme we only give you a very quick overview.
 Currently there are two methods, installing from the Nix User Repository (NUR) or cloning the repo.
 
-In both cases, first [isntall Nix](https://nixos.org/nix/manual/#chap-installation) on your system.
+In both cases, first [install Nix](https://nixos.org/nix/manual/#chap-installation) on your system.
 
 ```console
 curl -L https://nixos.org/nix/install | sh
 ``` 
 
-# Istallation from Clone
+# Installation from Clone
 
-Clone this repository and change direcotry into it.
+Clone this repository and change directory into it.
 From there, run:
 
 ```nix
