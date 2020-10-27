@@ -10,8 +10,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "st-instantos";
-    rev = "e8f64648285bf79e6d8cce180d3108cc135dd101";
-    sha256 = "0360g640rnrp8ylx316v8w4dnbpaj5ywa404dngvv8f9c6wmi455";
+    rev = "587d6799141809ed9f7f59bb61de296cdba9d089";
+    sha256 = "0z0nxsji3api45vaapyaw7kv65rx4f9imv6dxchs2b4v9mq9nlbh";
     name = "instantOS_instantST";
   };
 
