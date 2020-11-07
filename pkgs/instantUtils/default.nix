@@ -128,7 +128,8 @@ stdenv.mkDerivation rec {
       --replace /usr/share/rangerplugins "${rangerplugins}/share/rangerplugins" \
       --replace /usr/share/instantwidgets "\$(instantdata -wi)/share/instantwidgets" \
       --replace /usr/share/instantwallpaper "\$(instantdata -wa)/share/instantwidgets" \
-      --replace /usr/share/instantassist/assists "\$(instantdata -a)/share/instantassist/assists"
+      --replace /usr/share/instantassist/assists "\$(instantdata -a)/share/instantassist/assists" \
+      --replace /opt/instantos/rootinstall "$out/share/instantutils"
     substituteInPlace instantutils.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \

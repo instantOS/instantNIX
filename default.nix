@@ -98,7 +98,7 @@ pkgs.lib.makeExtensible (self: rec {
     instantDotfiles = self.instantdotfiles;
     extraPatches = [ ./pkgs/instantWm/french-keybindings.patch ];
   };
-  firacodenerd = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
+  firacodenerd = (pkgs.nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; });
   instantst = pkgs.callPackage ./pkgs/instantSt { firacodenerd = self.firacodenerd; };
   instantdata = pkgs.callPackage ./pkgs/instantData {
     instantAssist = self.instantassist;

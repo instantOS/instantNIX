@@ -33,7 +33,6 @@ in {
     interfaces."${physical_interface}".useDHCP = true;
     interfaces."${wifi_interface}".useDHCP = true;
   };
-  programs.slock.enable = true;
   services.xserver = {
     layout = "us";
     xkbVariant = "intl";
@@ -42,6 +41,8 @@ in {
   };
   # virtualisation.vmware.guest.enable = true;  # instantOS is a guest of VMWare host
   # virtualisation.virtualbox.guest.enable = true;  # instantOS is a guest of VirtualBox
+
+  #services.printing.enable = true;
 
   # Below this line, it gets technical, if in doubt, leave alone
 
@@ -57,6 +58,8 @@ in {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.opengl.driSupport32Bit = true;
+  networking.networkmanager.enable = true;
+  networking.nm-applet.enable = true;
 
   programs.ssh.extraConfig = ''
     Host gh
@@ -70,6 +73,8 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  programs.slock.enable = true;
+  services.clipmenu.enable = true;
   services.xserver.displayManager = {
     defaultSession = "none+instantwm";
     #startx.enable = true;
@@ -124,12 +129,20 @@ in {
       ${main_user} ALL=(root)NOPASSWD:BOOTCMDS
    '';
   };
-  fonts.fonts = with pkgs; [ dina-font ];
+  fonts.fonts = with pkgs; [ 
+    cantarell-fonts
+    fira-code
+    fira-code-symbols
+    dina-font
+    joypixels
+    (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
+  ];
   environment.systemPackages = with pkgs; [
     #open-vm-tools-headless
     htop gnupg screen tree file
     fasd fzf direnv
     wget curl w3m inetutils dnsutils nmap openssl mkpasswd
+    flameshot 
     gitAndTools.git git-lfs
     nix-prefetch-scripts cachix
     nur.repos.instantos.instantnix
