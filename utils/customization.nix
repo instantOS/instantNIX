@@ -1,4 +1,4 @@
-# Examle for customizing instantwm packages
+# Example for customizing instantwm packages
 
 (import ./.. { pkgs=import <nixpkgs> {}; }).extend (self: super: {
   instantwm = (super.instantwm.override {
