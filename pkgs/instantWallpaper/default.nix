@@ -8,6 +8,7 @@
 , Paperbash
 , imagemagick
 , nitrogen
+, xdg-user-dirs
 }:
 stdenv.mkDerivation {
 
@@ -44,6 +45,7 @@ stdenv.mkDerivation {
     Paperbash
     imagemagick
     nitrogen
+    xdg-user-dirs
   ];
 
   postPatch = ''
