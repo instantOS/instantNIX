@@ -8,7 +8,7 @@
 , rxvt_unicode
 , st
 , cantarell-fonts
-, joypixels
+#, joypixels
 , instantAssist
 , instantUtils
 , instantDotfiles
@@ -49,7 +49,7 @@ stdenv.mkDerivation {
   buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
   propagatedBuildInputs = [
     cantarell-fonts
-    joypixels
+    #joypixels
     pavucontrol
     rofi
     rxvt_unicode
