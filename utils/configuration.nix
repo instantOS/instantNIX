@@ -2,7 +2,6 @@
 # - Boot live medium
 # - Follow the install instructions from the NixOS manual
 # - Before running nixos-install command, copy this to /mnt/etc/nixos/configuration.nix
-# You will have to create an ~/.xinitrc on the new system (see sample in this folder)
 
 { config, pkgs, ... }:
 let
@@ -34,12 +33,15 @@ in {
     interfaces."${physical_interface}".useDHCP = true;
     interfaces."${wifi_interface}".useDHCP = true;
   };
+  programs.slock.enable = true;
   services.xserver = {
     layout = "us";
     xkbVariant = "intl";
     libinput.enable = true;  # Enable touchpad support.
     autorun = true;
   };
+  # virtualisation.vmware.guest.enable = true;  # instantOS is a guest of VMWare host
+  # virtualisation.virtualbox.guest.enable = true;  # instantOS is a guest of VirtualBox
 
   # Below this line, it gets technical, if in doubt, leave alone
 
@@ -69,15 +71,25 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.displayManager = {
-      startx.enable = true;
-      gdm.enable = false;
-      sddm.enable = false;
-    };
+    defaultSession = "none+instantwm";
+    #startx.enable = true;
+    gdm.enable = false;
+    sddm.enable = false;
+  };
   services.xserver.desktopManager = {
-      gnome3.enable = false;
-      plasma5.enable = false;
-      xterm.enable = false;
-    };
+    gnome3.enable = false;
+    plasma5.enable = false;
+    xterm.enable = false;
+  };
+  services.xserver.windowManager = {
+    session = pkgs.lib.singleton {
+      name = "instantwm";
+      start = ''
+        startinstantos &
+        waitPID = $!
+      '';
+    };  
+  };
 
   users.users."${main_user}" = {
     isNormalUser = true;
@@ -104,6 +116,14 @@ in {
     lg = log
     fa = fetch --all
   '';
+  security.sudo = {
+   enable = true;
+   extraConfig = ''
+     Defaults    insults
+      Cmnd_Alias BOOTCMDS = /sbin/shutdown,/usr/sbin/pm-suspend,/sbin/reboot
+      ${main_user} ALL=(root)NOPASSWD:BOOTCMDS
+   '';
+  };
   fonts.fonts = with pkgs; [ dina-font ];
   environment.systemPackages = with pkgs; [
     #open-vm-tools-headless
