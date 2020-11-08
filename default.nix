@@ -148,6 +148,8 @@ pkgs.lib.makeExtensible (self: rec {
         self.rangerplugins
         self.spotify-adblock
         self.pkgs.dash
+        self.pkgs.papirus-icon-theme
+        self.pkgs.arc-theme
     ];
   };
 } )
