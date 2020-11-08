@@ -343,9 +343,10 @@ static Key keys[] = {
 	{Mod1Mask, XK_F4, killclient, {0}},
 	{MODKEY, XK_F1, spawn, {.v = helpcmd}},
 	{MODKEY, XK_F2, toggleprefix, {0}},
-	{MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-	{MODKEY, XK_f, setlayout, {.v = &layouts[2]}},
-	{MODKEY, XK_m, setlayout, {.v = &layouts[3]}},
+	{MODKEY, XK_t, setlayout, {.v = &layouts[0]}}, // tiling
+	{MODKEY, XK_f, setlayout, {.v = &layouts[2]}}, // floating
+	{MODKEY, XK_m, setlayout, {.v = &layouts[3]}}, // monocle
+	{MODKEY, XK_minus, setlayout, {.v = &layouts[4]}}, // tcl
 	{MODKEY|ShiftMask, XK_m, movemouse, {0}},
 	{MODKEY|Mod1Mask, XK_m, resizemouse, {0}},
 	{MODKEY, XK_c, setlayout, {.v = &layouts[1]}},
