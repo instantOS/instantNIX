@@ -148,6 +148,7 @@ pkgs.lib.makeExtensible (self: rec {
         self.rangerplugins
         self.spotify-adblock
         self.pkgs.dash
+        self.pkgs.xdg-user-dirs
     ];
   };
 } )
