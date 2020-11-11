@@ -63,6 +63,7 @@ stdenv.mkDerivation {
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
+    install -Dm 555 instantwmctrl.sh $out/bin/instantwmctrl
   '';
 
   meta = with lib; {
