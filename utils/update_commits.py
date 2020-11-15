@@ -53,8 +53,13 @@ def handle_match(match, commit, text):
     logging.debug(fdict)
 
     # Dangerous if same sha or commit is used in other context in the same fale
-    text = text.replace(match["fullrev"],    f'rev = "{fdict["rev"]}"')
-    text = text.replace(match["fullsha256"], f'sha256 = "{fdict["sha256"]}"')
+    try:
+        text = text.replace(match["fullrev"],    f'rev = "{fdict.rev}"')
+        text = text.replace(match["fullsha256"], f'sha256 = "{fdict.sha256}"')
+    except TypeError:
+        logging.exception("You might be using an old version of nix_prefetch_github")
+        text = text.replace(match["fullrev"],    f'rev = "{fdict["rev"]}"')
+        text = text.replace(match["fullsha256"], f'sha256 = "{fdict["sha256"]}"')
     return text
 
 
