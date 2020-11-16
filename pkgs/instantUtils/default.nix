@@ -130,6 +130,7 @@ stdenv.mkDerivation rec {
       --replace /usr/share/instantwallpaper "\$(instantdata -wa)/share/instantwidgets" \
       --replace /usr/share/instantassist/assists "\$(instantdata -a)/share/instantassist/assists" \
       --replace /opt/instantos/rootinstall "$out/share/instantutils"
+    sed -i 's/^\s*setxkbmap\s\+-layout.*$//' autostart.sh
     substituteInPlace instantutils.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \

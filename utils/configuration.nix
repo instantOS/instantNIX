@@ -75,6 +75,7 @@ in {
   services.xserver.enable = true;
   programs.slock.enable = true;
   services.clipmenu.enable = true;
+  services.xserver.exportConfiguration = true;
   services.xserver.displayManager = {
     defaultSession = "none+instantwm";
     #startx.enable = true;
