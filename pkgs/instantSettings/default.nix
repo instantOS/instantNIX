@@ -67,7 +67,7 @@ stdenv.mkDerivation {
 
   postPatch = ''
     substituteInPlace settings.sh \
-      --replace "/usr/share/instantassist" "$out/share/instantassist" \
+      --replace "/usr/share/instantassist" "${instantAssist}/share/instantassist" \
       --replace "/usr/share/instantsettings" "$out/share"
   '';
 
