@@ -156,5 +156,5 @@ in {
     automatic = true;
     options = "--delete-older-than 14d";
   };
-  system.stateVersion = "20.03";
+  system.stateVersion = "20.09";
 }
