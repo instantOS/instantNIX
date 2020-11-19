@@ -27,11 +27,8 @@ in {
   boot.tmpOnTmpfs = true;
   networking = {
     hostName = hostname;
-    wireless.enable = true;
     useDHCP = false;  # should be disabled
     # ...instead enable for individual interfaces:
-    interfaces."${physical_interface}".useDHCP = true;
-    interfaces."${wifi_interface}".useDHCP = true;
   };
   services.xserver = {
     layout = "us";
@@ -59,7 +56,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
   hardware.opengl.driSupport32Bit = true;
   networking.networkmanager.enable = true;
-  networking.nm-applet.enable = true;
+  programs.nm-applet.enable = true;
 
   programs.ssh.extraConfig = ''
     Host gh
@@ -92,9 +89,9 @@ in {
       name = "instantwm";
       start = ''
         startinstantos &
-        waitPID = $!
+        waitPID=$!
       '';
-    };  
+    };
   };
 
   users.users."${main_user}" = {
@@ -147,6 +144,8 @@ in {
     gitAndTools.git git-lfs
     nix-prefetch-scripts cachix
     nur.repos.instantos.instantnix
+    papirus-icon-theme
+    arc-theme
     (neovim.override {viAlias = true; vimAlias = true;})
   ];
 
