@@ -1,7 +1,6 @@
 # SAMPLE NixOs configuration for a minimal instantOS system
 # - Boot live medium
 # - Follow the install instructions from the NixOS manual
-# - Before running nixos-install command, copy this to /mnt/etc/nixos/configuration.nix
 
 { config, pkgs, ... }:
 let
@@ -73,6 +72,8 @@ in {
   programs.slock.enable = true;
   services.clipmenu.enable = true;
   services.xserver.exportConfiguration = true;
+  services.dconf.enable = true;
+  services.gvfs.enable = true;
   services.xserver.displayManager = {
     defaultSession = "none+instantwm";
     #startx.enable = true;
@@ -136,16 +137,15 @@ in {
     (nerdfonts.override { fonts = [ "FiraCode" "FiraMono" ]; })
   ];
   environment.systemPackages = with pkgs; [
-    #open-vm-tools-headless
     htop gnupg screen tree file
     fasd fzf direnv
     wget curl w3m inetutils dnsutils nmap openssl mkpasswd
     flameshot 
     gitAndTools.git git-lfs
-    nix-prefetch-scripts cachix
+    nix-prefetch-scripts nix-update nixpkgs-review cachix
     nur.repos.instantos.instantnix
-    papirus-icon-theme
-    arc-theme
+    papirus-icon-theme arc-theme
+    #gnome3.nautilus gsettings-desktop-schemas gnome3.dconf-editor
     (neovim.override {viAlias = true; vimAlias = true;})
   ];
 
