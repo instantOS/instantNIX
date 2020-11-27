@@ -28,7 +28,7 @@ let
 
     src = fetchurl {
       url = "https://raw.githubusercontent.com/instantOS/instantLOGO/master/description/thanks.txt";
-      sha256 = "0h65x0g4wglkrw457sid0ycjc09pq1knicx9fzn35q9wr77yqkki";
+      sha256 = "0ivzww8pfc1ck7l7fizz48slfdpyx0lryqa3csaml8f2qxdrlrbi";
     };
     sourceRoot = ".";
     unpackCmd =  "cp $curSrc thanks.txt";

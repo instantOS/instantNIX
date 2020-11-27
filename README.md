@@ -13,9 +13,15 @@
 
 **InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR).
 It is a community-maintained meta-repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
-Please note, that our parent project instantOS is still in beta phase, and we are even more so.
+
+Please note, that our parent project instantOS is still in beta phase, 
+and we are even more so.
 Not everything will work out of the box and some extra setup might be required.
-We will strive to get InstantNIX into Nixpkgs soon after instantOS releases its version 1.0.
+That being said, we've never had a change that broke startup and basic functionality.
+Knock on wood!
+We will strive to get InstantNIX into [Nixpkgs](https://github.com/nixos/nixpkgs),
+the official Nix package repository, soon after instantOS releases its version 1.0.
+Then NUR-acrobatics will no longer be required.
 
 # Usage
 
