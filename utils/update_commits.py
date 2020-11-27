@@ -39,7 +39,7 @@ fetch_rex = re.compile(
           ((?P<fullname>    name   \s* = \s* "(?P<name>[\w=]+)")              \s* ; \s* )|
           ((?P<fullmodules> fetchSubmodules \s* = \s* "(?P<fetchSubmodules>[\w=]+)")  \s* ; \s* )|
           ((?P<fullrev>     rev    \s* = \s* "(?P<rev>[\w-]+)")               \s* ; \s* )|
-          ((?P<fullsha256>  sha256 \s* = \s* "(?P<sha256>[\w=]+)")            \s* ; \s* )
+          ((?P<fullsha256>  sha256 \s* = \s* "(?P<sha256>(sha256-)?[\w=+_/,-]+)")   \s* ; \s* )
         )+}
     """,
     re.MULTILINE | re.VERBOSE
