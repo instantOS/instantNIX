@@ -10,8 +10,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "paperbenni";
     repo = "bash";
-    rev = "77dfb51fd015bb9a4a8c967eef929c0c97bd61ab";
-    sha256 = "sha256-S4M11K/892QcbxEBA07s1U7IS+fFNzenYmCLKiYUtSI=";
+    rev = "bd98933519d6fde56a516e481a75d0a5b85aa3f0";
+    sha256 = "sha256-G8fSIdE2ETR9fi603Tj82+ryAikAfJMJd36D7sDHe4s=";
     name = "paperbenni_bash";
   };
 
