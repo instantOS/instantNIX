@@ -24,8 +24,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantWM";
-    rev = "a402e22f0f2451eb32b8d1179d4192fbea5d33b5";
-    sha256 = "sha256-S/3tDgZoBT9HDGVRz9pn7cEmPCf5MSiUg1nsSvGIkh0=";
+    rev = "3f0bc9f270d324b6a3a0a657f80e7141d4ca44d6";
+    sha256 = "sha256-C+pF8l+uoWtJmYo68h4gDLh+00AvGB+QaH2/64HKs1I=";
     name = "instantOS_instantWm";
   };
 
@@ -64,6 +64,10 @@ stdenv.mkDerivation {
     install -Dm 555 instantwm $out/bin/instantwm
     install -Dm 555 startinstantos $out/bin/startinstantos
     install -Dm 555 instantwmctrl.sh $out/bin/instantwmctrl
+  '';
+
+  checkPhase = ''
+    $out/bin/instantwm -V > /dev/null
   '';
 
   meta = with lib; {

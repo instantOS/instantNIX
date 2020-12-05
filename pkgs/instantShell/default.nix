@@ -19,8 +19,8 @@ stdenv.mkDerivation {
     (fetchFromGitHub {
       owner = "ohmyzsh";
       repo = "ohmyzsh";
-      rev = "05e2956dc61198d4767b96d97c5d10c93cedd6e3";
-      sha256 = "sha256-1Eh6L92hvSHcQeQL+1bCDrg/2FKaZshKTTF2PeVGhLs=";
+      rev = "4f8964d8fff25b67e79029d570d171c8cdf3f833";
+      sha256 = "sha256-KtyyvnAgz4kC4lIFc0oZe1dRYlQBSx8fADG+4py9bwQ=";
       name = "ohmyzsh";
     })
   ];

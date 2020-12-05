@@ -20,6 +20,7 @@
 , wmctrl
 , xfce4-power-manager
 , zenity
+, extraPatches ? []
 }:
 let
   thanks = stdenv.mkDerivation {
@@ -81,10 +82,12 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "f3a65e1f0e25a2e0af99aba46a9bc2bea82bfc1e";
-    sha256 = "sha256-zElzIyG+zJ9LRGvjaNARutn+EmJID8NsTHhMIXGDclY=";
+    rev = "c85fb95f1c73acbc82e0cf23bc8f286baf462d00";
+    sha256 = "sha256-6/zvpKgFQG5N9BJOJSFBLHn7BoRjqKaTtul4dxBtvcM=";
     name = "instantOS_instantUtils";
   };
+
+  patches = extraPatches;
 
   nativeBuildInputs = [ makeWrapper ];
 
