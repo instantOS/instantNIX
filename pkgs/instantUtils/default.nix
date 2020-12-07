@@ -5,7 +5,9 @@
 , makeWrapper
 , acpi
 , autorandr
-, conky , dunst , firefox
+, conky
+, dunst
+, firefox
 , libnotify
 , lxsession
 , neofetch
@@ -16,13 +18,29 @@
 , rangerplugins
 , rofi
 , rox-filer
+, disper
 , st
+, slock
 , wmctrl
 , xfce4-power-manager
 , zenity
 , extraPatches ? []
+, defaultApps ? {}
 }:
 let
+
+  defaults = {
+   terminal = "st";
+   graphicaleditor = "'st -e nvim'";
+   appmenu = "appmenu";
+   browser = "firefox";
+   filemanager = "nautilus";
+   systemmonitor = "'st -e htop'";
+   editor = "'st -e nvim'";
+   termeditor = "nvim";
+   lockscreen = "${slock}/bin/slock";
+  } // defaultApps;
+
   thanks = stdenv.mkDerivation {
     pname = "instantOS-thanks";
     version = "unstable";
@@ -96,6 +114,7 @@ stdenv.mkDerivation rec {
     autorandr
     conky
     dunst
+    disper
     firefox
     libnotify
     lxsession
@@ -138,6 +157,16 @@ stdenv.mkDerivation rec {
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
+    substituteInPlace setup/defaultapps \
+      --replace "setprogram terminal st" "setprogram terminal ${defaults.terminal}" \
+      --replace "setprogram graphicaleditor code" "setprogram graphicaleditor ${defaults.graphicaleditor}" \
+      --replace "setprogram editor nvim-qt" "setprogram editor ${defaults.editor}" \
+      --replace "setprogram termeditor nvim" "setprogram termeditor ${defaults.termeditor}" \
+      --replace "setprogram appmenu appmenu" "setprogram appmenu ${defaults.appmenu}" \
+      --replace "setprogram browser firefox" "setprogram browser ${defaults.browser}" \
+      --replace "setprogram filemanager nautilus" "setprogram filemanager ${defaults.filemanager}" \
+      --replace "setprogram systemmonitor mate-system-monitor" "setprogram systemmonitor ${defaults.systemmonitor}" \
+      --replace "setprogram lockscreen ilock" "setprogram lockscreen ${defaults.lockscreen}"
     patchShebangs *.sh
   '';
 
@@ -204,6 +233,8 @@ stdenv.mkDerivation rec {
       --prefix PATH : ${lib.makeBinPath [ wmctrl ]}
     wrapProgram "$out/bin/instantstatus" \
       --prefix PATH : ${lib.makeBinPath [ acpi ]}
+    wrapProgram "$out/bin/instantdisper" \
+      --prefix PATH : ${lib.makeBinPath [ disper dunst ]}
   '';
 
   meta = with lib; {
