@@ -100,8 +100,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "4ee423cf5f393361abba44a5547d9528cd337d1e";
-    sha256 = "sha256-ns8CwMoexIWA2WsikSGov0uK6qFFfPsgkxJcEIfZGUs=";
+    rev = "bc23a11b1f156c0272366e7009205c27584dff1d";
+    sha256 = "sha256-Foudm39ipf8lBuNaHRJ/7CepNiY+IZOVrETYcHZFYPw=";
     name = "instantOS_instantUtils";
   };
 
@@ -152,7 +152,7 @@ stdenv.mkDerivation rec {
       --replace /usr/share/instantwallpaper "\$(instantdata -wa)/share/instantwidgets" \
       --replace /usr/share/instantassist/assists "\$(instantdata -a)/share/instantassist/assists" \
       --replace /opt/instantos/rootinstall "$out/share/instantutils"
-    sed -i 's/^\s*setxkbmap\s\+-layout.*$//' autostart.sh
+    sed -i 's/^\s*setxkbmap\s\+-layout.*$/:;/' autostart.sh
     substituteInPlace instantutils.sh \
       --replace /usr/share/instantutils "$out/share/instantutils"
     substituteInPlace installinstantos.sh \
