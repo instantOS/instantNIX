@@ -312,6 +312,7 @@ static Key keys[] = {
 	{MODKEY | Mod1Mask | ControlMask, XK_l, spawn, {.v = langswitchcmd}},
 	{MODKEY, XK_Return, spawn, {.v = termcmd}},
 	{ControlMask|Mod1Mask, XK_t, spawn, {.v = termcmd}},
+	{ControlMask|Mod1Mask, XK_l, spawn, SHCMD("slock")},
 	{MODKEY, XK_f, spawn, {.v = firefoxcmd} },
 	{MODKEY, XK_v, spawn, {.v = quickmenucmd}},
 	{MODKEY, XK_b, togglebar, {0}},
