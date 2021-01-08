@@ -57,8 +57,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "fb139828255e548077e201f9d5cbc30fc8d7966f";
-    sha256 = "sha256-XZDLgUade68JZsoOWS1WpQx7PQSLQPHgFHtMBpcXUH8=";
+    rev = "dd8bbbf46c5c2dcefa81c307bb9256fcdf2a6648";
+    sha256 = "sha256-XxdtKF85IiUdR2WJg3JvWSVtjOLi8Vlt+CNSWPiUfTM=";
   };
   # src = ../../src/instantsettings;
 
@@ -75,6 +75,7 @@ stdenv.mkDerivation {
   '';
 
   installPhase = ''
+    make install PREFIX=$out/
     ln -s "$out/bin/instantsettings" "$out/bin/instantos-control-center"
     runHook postInstall
   '';
