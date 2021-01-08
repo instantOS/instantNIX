@@ -32,7 +32,7 @@ stdenv.mkDerivation {
 
   patches = [ ] ++ extraPatches;
 
-  postPatch =  
+  postPatch =
   ( if builtins.isPath wmconfig then "cp ${wmconfig} config.def.h\n" else "" ) + 
   ''
     substituteInPlace config.mk \
