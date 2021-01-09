@@ -57,27 +57,25 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "e95ad69d3a6c3bc523626789848d59348ea274d3";
-    sha256 = "sha256-/7uBOma5Lppmn9zUiNGYon5aKyKaq5YvJUJPFmGG4TA=";
+    rev = "dd8bbbf46c5c2dcefa81c307bb9256fcdf2a6648";
+    sha256 = "sha256-XxdtKF85IiUdR2WJg3JvWSVtjOLi8Vlt+CNSWPiUfTM=";
   };
-  #src = ../../src/instantsettings;
+  # src = ../../src/instantsettings;
 
   nativeBuildInputs = [ makeWrapper ];
 
   propagatedBuildInputs = utilities;
 
+  makeFlags = [ "PREFIX=$(out)/" ];
+
   postPatch = ''
     substituteInPlace settings.sh \
       --replace "/usr/share/instantassist" "${instantAssist}/share/instantassist" \
-      --replace "/usr/share/instantsettings" "$out/share"
+      --replace "/usr/share/instantsettings" "$out/share/instantsettings"
   '';
 
   installPhase = ''
-    mkdir -p "$out/share/applications"
-    cp *.desktop "$out/share/applications"
-    mkdir -p "$out/share/utils"
-    cp utils/*.sh "$out/share/utils/"
-    install -Dm 555 settings.sh "$out/bin/instantsettings"
+    make install PREFIX=$out/
     ln -s "$out/bin/instantsettings" "$out/bin/instantos-control-center"
     runHook postInstall
   '';
