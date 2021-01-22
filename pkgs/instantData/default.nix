@@ -26,7 +26,7 @@ stdenv.mkDerivation {
     repo = "instantData";
     # rev = "ade1148cd26c272cb569f9a4c10337f5a4e91f29";
     rev = "e707dbdd7c99e948a9ab7e1c5b82496168f3d642";
-    sha256 = "0amlr04fk7r3azbq01lflf9izlzaaijdm19lcndi9bmfp8yci7xr";
+    sha256 = "sha256:16cp3jxggpkf3nc2vylykgrnlaa1vfbq0hhpwpjk9x5kwc87ng79";
     name = "instantOS_instantData";
   };
 
