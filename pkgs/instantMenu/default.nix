@@ -13,8 +13,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantMENU";
-    rev = "e2015780c523eb8091523bb17970ee4aaa11d9e6";
-    sha256 = "sha256-U9hbEQt3COjYGVtR7a6NOVR5SzdFlW6vHmELbK+Qtmo=";
+    rev = "2f8ba6b81d0c413d16731e02f80096767493f9b1";
+    sha256 = "sha256-czlo+jReRK765EPApTovG1KBdoROPCpwo1/H5y9yQYA=";
     name = "instantOS_instantMenu";
   };
 
