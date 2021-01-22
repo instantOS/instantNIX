@@ -8,17 +8,23 @@
 [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX)
 
 [InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
+[Nix](https://nixos.org/explore.html) is your friendly, reproducible package manager and build tool for the experienced user.
+Nix works on most Linux distributions and some versions of macOS.
 
 [![InstantOS beta5 preview](https://img.youtube.com/vi/zqcEv3bdIAM/0.jpg)](http://www.youtube.com/watch?v=zqcEv3bdIAM)
 
 **InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR).
 It is a community-maintained meta-repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
 
-Please note, that our parent project instantOS is still in beta phase, 
+Please note, that our parent project instantOS is still in beta phase,
 and we are even more so.
 Not everything will work out of the box and some extra setup might be required.
 That being said, we've never had a change that broke startup and basic functionality.
 Knock on wood!
+
+Nix itself is not for the faint of heart or people adverse to tinkering and learning
+who are hard-pressed for time.
+
 We will strive to get InstantNIX into [Nixpkgs](https://github.com/nixos/nixpkgs),
 the official Nix package repository, soon after instantOS releases its version 1.0.
 Then NUR-acrobatics will no longer be required.
