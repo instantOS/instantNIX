@@ -13,8 +13,8 @@ Nix works on most Linux distributions and some versions of macOS.
 
 [![InstantOS beta5 preview](https://img.youtube.com/vi/zqcEv3bdIAM/0.jpg)](http://www.youtube.com/watch?v=zqcEv3bdIAM)
 
-**InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR).
-It is a community-maintained meta-repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
+**InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR),
+a community-maintained meta-repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
 
 Please note, that our parent project instantOS is still in beta phase,
 and we are even more so.
@@ -34,11 +34,13 @@ Then NUR-acrobatics will no longer be required.
 Detailed instructions on how to install and use instantOS tools with Nix or
 on NixOS can be found in the [instantNix Wiki](https://github.com/instantOS/instantNIX/wiki).
 In this Readme we only give you a very quick overview.
-Currently there are two methods, installing from the Nix User Repository (NUR)
-or cloning the repo.
+Currently, there are two approaches:
+
+- cloning the repo
+- installing from the Nix User Repository (NUR)
 
 In both cases, first [install Nix](https://nixos.org/nix/manual/#chap-installation)
-on your system if not already installed.
+on your system if not already installed:
 
 ```console
 curl -L https://nixos.org/nix/install | sh
