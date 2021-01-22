@@ -23,6 +23,7 @@
 , slock
 , wmctrl
 , xfce4-power-manager
+, upower
 , zenity
 , extraPatches ? []
 , defaultApps ? {}
@@ -129,6 +130,7 @@ stdenv.mkDerivation rec {
     st
     wmctrl
     xfce4-power-manager
+    upower
     zenity
 
     thanks
