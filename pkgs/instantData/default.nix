@@ -24,10 +24,8 @@ stdenv.mkDerivation {
     # owner = "SCOTT-HAMILTON";
     owner = "ppenguin";
     repo = "instantData";
-    # rev = "ade1148cd26c272cb569f9a4c10337f5a4e91f29";
-    ref = "add-user-config-capability";
-    rev = "bba7c8e13eec3791aa65e7bbc41c69928a26d842";
-    sha256 = "sha256:06x6fy1al20m37sa32i6kxczjws39zfg1xrwa4n0vfyrq1mj734l";
+    rev = "9333d102c20f17d5f191880727f7888c5907cbcd";
+    sha256 = "sha256:1jb43ajd140m3mdqzs7vyyd7634j1zl0wdni48scs5mvgb7kgz51";
     name = "instantOS_instantData";
   };
 
