@@ -24,6 +24,8 @@ pkgs.lib.makeExtensible (self: rec {
   modules = import ./modules; # NixOS modules
   overlays = pkgs.stdenv.lib.traceVal (import ./overlays); # nixpkgs overlays
 
+  tests = import ./tests { inherit pkgs; instantnix = self; };
+
   # instant WM and utils
   argtable3 = pkgs.callPackage ./pkgs/argtable3 { };
   gufw = with pkgs.python3Packages; pkgs.callPackage ./pkgs/gufw { inherit buildPythonApplication distutils_extra; };
