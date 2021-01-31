@@ -142,6 +142,8 @@ stdenv.mkDerivation rec {
     substituteInPlace "$fl" \
       --replace "#!/usr/bin/dash" "#!/bin/sh"
     done
+    substituteInPlace programs/instantstartmenu \
+      --replace "/usr/share/instantutils/thanks.txt" "${thanks}/thanks.txt"
     substituteInPlace programs/appmenu \
       --replace "#!/usr/bin/dash" "#!/bin/sh" \
       --replace "/usr/share/instantdotfiles/rofi/appmenu.rasi" "tmp_placeholder" \
