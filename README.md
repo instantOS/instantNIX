@@ -5,8 +5,10 @@
 </div>
 
 -------
-main: [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX) |
-dev: [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.org/instantOS/instantNIX)
+
+| main [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX) |
+dev [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.org/instantOS/instantNIX) |
+cache [![Cachix Cache](https://img.shields.io/badge/cachix-instantos-blue.svg)](https://instantos.cachix.org) |
 
 [InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
 [Nix](https://nixos.org/explore.html) is your friendly, reproducible package manager and build tool for the experienced user.
@@ -15,7 +17,8 @@ Nix works on most Linux distributions and some versions of macOS.
 [![InstantOS beta5 preview](https://img.youtube.com/vi/zqcEv3bdIAM/0.jpg)](http://www.youtube.com/watch?v=zqcEv3bdIAM)
 
 **InstantNix** is a sub-repository to the [Nix User Repository (NUR)](https://github.com/nix-community/NUR),
-a community-maintained meta-repository and **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
+a community-maintained meta-repository.
+InstantNIX is **not** part of [Nixpkgs](https://github.com/nixos/nixpkgs) (yet).
 
 Please note, that our parent project instantOS is still in beta phase,
 and we are even more so.
@@ -24,7 +27,7 @@ That being said, we've never had a change that broke startup and basic functiona
 Knock on wood!
 
 Nix itself is not for the faint of heart or people adverse to tinkering and learning
-who are hard-pressed for time.
+or those who are hard-pressed for time.
 
 We will strive to get InstantNIX into [Nixpkgs](https://github.com/nixos/nixpkgs),
 the official Nix package repository, soon after instantOS releases its version 1.0.
@@ -111,5 +114,3 @@ $ cachix use instantos
 
 That way Nix does not compile as much from source and rather uses pre-compiled
 packages from [cachix](https://cachix.org).
-
-[![Cachix Cache](https://img.shields.io/badge/cachix-instantos-blue.svg)](https://instantos.cachix.org)
