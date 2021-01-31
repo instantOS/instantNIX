@@ -5,7 +5,8 @@
 </div>
 
 -------
-[![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX)
+main: [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX) |
+dev: [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.org/instantOS/instantNIX)
 
 [InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
 [Nix](https://nixos.org/explore.html) is your friendly, reproducible package manager and build tool for the experienced user.
