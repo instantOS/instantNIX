@@ -37,6 +37,7 @@ Then NUR-acrobatics will no longer be required.
 
 Detailed instructions on how to install and use instantOS tools with Nix or
 on NixOS can be found in the [instantNix Wiki](https://github.com/instantOS/instantNIX/wiki).
+We even have a section on [Installing instantNIX on a Raspberry Pi](https://github.com/instantOS/instantNIX/wiki/instantNIX-on-a-Raspberry-Pi-4B).
 In this Readme we only give you a very quick overview.
 Currently, there are two approaches:
 
