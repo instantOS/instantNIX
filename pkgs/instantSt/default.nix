@@ -1,7 +1,7 @@
-{ stdenv, fetchFromGitHub, pkgconfig, writeText, libX11, ncurses
+{ stdenv, lib, fetchFromGitHub, pkgconfig, writeText, libX11, ncurses
 , libXft, harfbuzz, firacodenerd, conf ? null, patches ? [], extraLibs ? []}:
 
-with stdenv.lib;
+with lib;
 
 stdenv.mkDerivation rec {
   pname = "instantSt";
