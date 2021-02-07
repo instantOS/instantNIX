@@ -76,7 +76,7 @@ stdenv.mkDerivation {
     license = licenses.mit;
     homepage = "https://github.com/instantOS/instantWM";
     maintainers = [ 
-        stdenv.lib.maintainers.shamilton
+        maintainers.shamilton
         "con-f-use <con-f-use@gmx.net>"
         "paperbenni <instantos@paperbenni.xyz>"
     ];
