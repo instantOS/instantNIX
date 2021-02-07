@@ -117,10 +117,10 @@
     uid = 1000;
     extraGroups = [ "wheel" "audio" "networkmanager" "wireshark" "dialout" "plugdev" "adm" "disk" "video" "docker" ];
     #openssh.authorizedKeys.keys = ssh_pkeys;
-    hashedPassword = "$6$Xe3WN..."
+    hashedPassword = "$6$Xe3WN...";  # generate with mkpasswd -m sha-512
     openssh.authorizedKeys.keys = [
-      "ssh-rsa AAAAB3..."
-      "ssh-ed25519 AAAAC3..."
+      "ssh-rsa AAAAB3..."            # paste your PUBLIC ssh keys here
+      "ssh-ed25519 AAAAC3..."        #...to give access
     ];
   };
 
