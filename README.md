@@ -10,9 +10,9 @@
 dev [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.org/instantOS/instantNIX) |
 cache [![Cachix Cache](https://img.shields.io/badge/cachix-instantos-blue.svg)](https://instantos.cachix.org) |
 
-[InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix.
+[InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix and NixOS.
 [Nix](https://nixos.org/explore.html) is your friendly, reproducible package manager and build tool for the experienced user.
-Nix works on most Linux distributions and some versions of macOS.
+Nix, and therefore **instantNIX,** too, works on most Linux distributions and some versions of macOS.
 
 [![InstantOS beta5 preview](https://img.youtube.com/vi/zqcEv3bdIAM/0.jpg)](http://www.youtube.com/watch?v=zqcEv3bdIAM)
 
@@ -49,7 +49,9 @@ on your system if not already installed:
 
 ```console
 curl -L https://nixos.org/nix/install | sh
-``` 
+```
+
+Currently, you will have the least manual configuration to do if you use NixOS as a base.
 
 # Installation from Clone
 
