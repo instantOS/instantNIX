@@ -151,7 +151,7 @@ static const char *instantrepeatcmd[] = {"instantrepeat", NULL};
 static const char *instantpacmancmd[] = {"instantpacman", NULL};
 static const char *instantsharecmd[] = {"instantshare", "snap", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
-static const char *slockcmd[] = {"ilock", NULL};
+static const char *slockcmd[] = {".config/instantos/default/lockscreen", NULL};
 static const char *langswitchcmd[] = {"ilayout", NULL};
 static const char *oslockcmd[] = {"instantlock", "-o", NULL};
 static const char *helpcmd[] = {"instanthotkeys", "gui", NULL};
@@ -307,7 +307,7 @@ static Key keys[] = {
 	{Mod1Mask, XK_Tab, spawn, {.v = iswitchcmd}},
 	{MODKEY|Mod1Mask|ControlMask|ShiftMask, XK_Tab, alttabfree, {0}},
 	{MODKEY, XK_dead_circumflex, spawn, {.v = caretinstantswitchcmd}},
-	{MODKEY | ControlMask, XK_l, spawn, SHCMD("slock & systemctl suspend")},
+	{MODKEY | ControlMask, XK_l, spawn, SHCMD("slock & systemctl suspend")}, // {.v = slockcmd}}
 	{MODKEY | ControlMask, XK_h, hidewin, {0}},
 	{MODKEY | Mod1Mask | ControlMask, XK_h, unhideall, {0}},
 	{MODKEY | Mod1Mask | ControlMask, XK_l, spawn, {.v = langswitchcmd}},
