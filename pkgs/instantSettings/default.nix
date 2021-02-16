@@ -59,8 +59,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "4792113f2a5426784a619757ce1b7b6c57535e16";
-    sha256 = "sha256-2pMvMuXbIF4HT4gjA0isQqHqC0c07vhlGMZsE4tzwgo=";
+    rev = "a64cc2ffb7ae8e781fd38140d39fbb8d99a2c2f3";
+    sha256 = "sha256-fJEa7JRdk+OFxHnOUBkEqbuIaHRcdT84uAjJERXLF5Q=";
   };
   # src = ../../src/instantsettings;
 
