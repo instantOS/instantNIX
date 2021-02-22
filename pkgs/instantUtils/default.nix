@@ -70,7 +70,7 @@ let
 
     src = fetchurl {
       url = "https://raw.githubusercontent.com/instantOS/instantos.github.io/master/youtube/hotkeys.md";
-      sha256 = "sha256-wsQUNLXzdAdyMi2lcMZKp7uubIN9fFVo09OmRd2trIo=";
+      sha256 = "sha256-0d4gzvywnck29s21wybwwg4facwah47lbps1qa408rpbw5xiaq26";
     };
     sourceRoot = ".";
     unpackCmd =  "cp $curSrc hotkeys.md";
