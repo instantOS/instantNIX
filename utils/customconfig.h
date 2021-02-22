@@ -151,7 +151,7 @@ static const char *instantrepeatcmd[] = {"instantrepeat", NULL};
 static const char *instantpacmancmd[] = {"instantpacman", NULL};
 static const char *instantsharecmd[] = {"instantshare", "snap", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
-static const char *slockcmd[] = {"ilock", NULL};
+static const char *slockcmd[] = {".config/instantos/default/lockscreen", NULL};
 static const char *langswitchcmd[] = {"ilayout", NULL};
 static const char *oslockcmd[] = {"instantlock", "-o", NULL};
 static const char *helpcmd[] = {"instanthotkeys", "gui", NULL};
@@ -170,7 +170,7 @@ static const char *controlcentercmd[] = { "instantsettings", NULL};
 static const char *displaycmd[] = { "instantdisper", NULL};
 static const char *pavucontrol[] = { "pavucontrol", NULL};
 static const char *instantsettings[] = { "instantsettings", NULL};
-static const char  *clickcmd[] = { "autoclicker", NULL };
+// static const char  *clickcmd[] = { "autoclicker", NULL };
 static const char  *codecmd[] = { "instantutils open graphicaleditor", NULL };
 static const char  *startmenucmd[] = { "instantstartmenu", NULL };
 
@@ -227,6 +227,7 @@ static Xcommand commands[] = {
 	{ "overlay",    setoverlay,      {0}, 0 },
 	{ "tag",        view,      { .ui = 2 }, 3 },
 	{ "animated",   toggleanimated,      { .ui = 2 }, 1 },
+	{ "focusfollowsmouse", togglefocusfollowsmouse, { .ui = 2 }, 1 },
 	{ "alttab",   alttabfree,      { .ui = 2 }, 1 },
 	{ "layout",   commandlayout,      { .ui = 0 }, 1 },
 	{ "prefix",   commandprefix,      { .ui = 1 }, 1 },
@@ -306,7 +307,7 @@ static Key keys[] = {
 	{Mod1Mask, XK_Tab, spawn, {.v = iswitchcmd}},
 	{MODKEY|Mod1Mask|ControlMask|ShiftMask, XK_Tab, alttabfree, {0}},
 	{MODKEY, XK_dead_circumflex, spawn, {.v = caretinstantswitchcmd}},
-	{MODKEY | ControlMask, XK_l, spawn, SHCMD("slock & systemctl suspend")},
+	{MODKEY | ControlMask, XK_l, spawn, SHCMD("slock & systemctl suspend")}, // {.v = slockcmd}}
 	{MODKEY | ControlMask, XK_h, hidewin, {0}},
 	{MODKEY | Mod1Mask | ControlMask, XK_h, unhideall, {0}},
 	{MODKEY | Mod1Mask | ControlMask, XK_l, spawn, {.v = langswitchcmd}},

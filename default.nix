@@ -22,7 +22,9 @@ pkgs.lib.makeExtensible (self: rec {
   # The `lib`, `modules`, and `overlay` names are special
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
-  overlays = pkgs.stdenv.lib.traceVal (import ./overlays); # nixpkgs overlays
+  overlays = pkgs.lib.traceVal (import ./overlays); # nixpkgs overlays
+
+  tests = import ./tests { inherit pkgs; instantnix = self; };
 
   # instant WM and utils
   argtable3 = pkgs.callPackage ./pkgs/argtable3 { };

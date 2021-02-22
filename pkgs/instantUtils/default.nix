@@ -101,8 +101,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "e17c83b59a5a0bd51ce34306c40a5b83f04a087a";
-    sha256 = "sha256-eb9A1Z3sq2cx/NFEEF2YWoyQXnOz2i0lVJWdGJn6h04=";
+    rev = "aa835c7a29460cbaa713edf4f77a5a0241503518";
+    sha256 = "sha256-x+Ov81CGhmYzsHXFjL4o4kJZ698Vo2AZYY7eoxH/YOs=";
     name = "instantOS_instantUtils";
   };
 
@@ -142,6 +142,8 @@ stdenv.mkDerivation rec {
     substituteInPlace "$fl" \
       --replace "#!/usr/bin/dash" "#!/bin/sh"
     done
+    substituteInPlace programs/instantstartmenu \
+      --replace "/usr/share/instantutils/thanks.txt" "${thanks}/thanks.txt"
     substituteInPlace programs/appmenu \
       --replace "#!/usr/bin/dash" "#!/bin/sh" \
       --replace "/usr/share/instantdotfiles/rofi/appmenu.rasi" "tmp_placeholder" \
