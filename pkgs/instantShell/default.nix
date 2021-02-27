@@ -41,8 +41,7 @@ stdenv.mkDerivation {
     install -Dm 755 instantOS_instantShell/instantshell.sh "$out/bin/instantshell"
     install -Dm 644 instantOS_instantShell/instantos.plugin.zsh $out/share/instantshell/custom/plugins/instantos/instantos.plugin.zsh
     install -Dm 644 instantOS_instantShell/instantos.zsh-theme $out/share/instantshell/custom/themes/instantos.zsh-theme
-    ls -al instantOS_instantShell/
-    #install -Dm 644 instantOS_instantShell/zshrc $out/share/instantshell/zshrc
+    install -Dm 644 instantOS_instantShell/zshrc $out/share/instantshell/zshrc || true
     cp -r ohmyzsh/* $out/share/instantshell
   '';
 
