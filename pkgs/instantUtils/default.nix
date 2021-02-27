@@ -103,8 +103,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "12ec90a906fe5d56c6edaeacecb4502b0e0eb2b3";
-    sha256 = "sha256-IykQJUKmDOCV9lROD1qIVrYXePEcLYkSmY/n7zwJWNU=";
+    rev = "ca25b4598c2b1f54cde651f13ce69e1c9beec507";
+    sha256 = "1bY/nW7c263ektzsX9m0ztiKcaUyboMxTfGgP+q0X8M=";
     name = "instantOS_instantUtils";
   };
 
@@ -178,13 +178,13 @@ stdenv.mkDerivation rec {
 
   dontBuild = true;
 
-  makeFlags = [ "PREFIX=$(out)" ];
+  makeFlags = [ "DESTDIR=$(out)" "PREFIX=" ];
 
   installTargets = [ "install_local" ];
 
   installPhase = ''
     runHook preInstall
-    make install_local PREFIX=$out
+    make install_local DESTDIR=$out PREFIX=
     runHook postInstall
   '';
 
