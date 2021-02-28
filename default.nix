@@ -16,7 +16,11 @@
   pkgs ? import <nixpkgs> {}
 }:
 
-pkgs.lib.makeExtensible (self: rec {
+pkgs.lib.makeExtensible (self:
+  pkgs.lib.traceValFn (x:
+   "Nixpkgs version : ${pkgs.lib.version}"
+  )
+rec {
   inherit pkgs;
 
   # The `lib`, `modules`, and `overlay` names are special
