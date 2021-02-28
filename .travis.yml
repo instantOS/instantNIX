@@ -1,7 +1,7 @@
 language: nix
 nix: 2.3.4
-
-sudo: false
+os: linux
+dist: xenial
 
 env:
   global:
@@ -21,7 +21,7 @@ env:
       # https://github.com/nix-community/NUR/blob/master/repos.json
     - NUR_REPO=instantos
 
-matrix:
+jobs:
   include:
     - env: NIX_CHANNEL=nixpkgs-unstable NIXPKGS_ALLOW_UNFREE=1
     - env: NIX_CHANNEL=nixos-unstable NIXPKGS_ALLOW_UNFREE=1
