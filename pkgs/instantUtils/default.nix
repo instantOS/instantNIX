@@ -48,7 +48,7 @@ let
 
     src = fetchurl {
       url = "https://raw.githubusercontent.com/instantOS/instantLOGO/master/description/thanks.txt";
-      sha256 = "sha256-cWWaW8fCIVqVZkNhnyno/jZHNSL/R3fomSwwdxHnf0c=";
+      sha256 = "sha256-q1pttBrCgsX8xk0CPTy0MWl/5MJN3NTFkvtoypbca1Q=";
     };
     sourceRoot = ".";
     unpackCmd =  "cp $curSrc thanks.txt";
@@ -71,7 +71,7 @@ let
 
     src = fetchurl {
       url = "https://raw.githubusercontent.com/instantOS/instantos.github.io/master/youtube/hotkeys.md";
-      sha256 = "sha256-f9T6dWZP3c0rAL1kIwXgOSYIzHoIOdOOKGXE/drwH5o=";
+      sha256 = "sha256-UKsL0gqmMwCPozNWA7lU1XGKWKvunZIPpeftBZu8Xto=";
     };
     sourceRoot = ".";
     unpackCmd =  "cp $curSrc hotkeys.md";
@@ -103,8 +103,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "fdcf7d9e566038d13a44e06ee286f491045608a5";
-    sha256 = "sha256-hRxzaH1Z4xNuqBw03EWBh1Doxdgfs64uOUF3c85Qnmc=";
+    rev = "65512460f2b3097aea463d0a43fbc653e5a2faad";
+    sha256 = "34gTWeRRxTBy744VqAVhIA3dOjRWT9/V+FqaIfHQ+hs=";
     name = "instantOS_instantUtils";
   };
 
