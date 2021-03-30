@@ -164,7 +164,7 @@ static const char *onboardcmd[] = {"onboard", NULL};
 static const char *instantshutdowncmd[] = {"instantshutdown", NULL};
 static const char *systemmonitorcmd[] = {".config/instantos/default/systemmonitor", NULL};
 static const char *notifycmd[] = {"instantnotify", NULL};
-static const char *rangercmd[] = { "st", "-e", "ranger", NULL };
+static const char *rangercmd[] = { ".config/instantos/default/terminal", "-e", "ranger", NULL };
 static const char *panther[] = { ".config/instantos/default/appmenu", NULL};
 static const char *controlcentercmd[] = { "instantsettings", NULL};
 static const char *displaycmd[] = { "instantdisper", NULL};
@@ -322,7 +322,7 @@ static Key keys[] = {
 	{MODKEY, XK_f, spawn, {.v = firefoxcmd} },
 
 	{MODKEY,                                XK_v,               spawn,                {.v = quickmenucmd}},
-	{MODKEY,                                XK_b,               togglebar,            {0}},
+	{MODKEY,                                XK_b,               directionfocus,            {0}},
 	{MODKEY,                                XK_j,               focusstack,           {.i = +1}},
 	{MODKEY,                                XK_Down,            downkey,              {.i = +1}},
 	{MODKEY|ShiftMask,                      XK_Down,            downpress,            {0}},
@@ -373,10 +373,15 @@ static Key keys[] = {
 	{MODKEY,                                XK_e,               overtoggle,           {.ui = ~0}},
 	{MODKEY|ShiftMask,                      XK_e,               fullovertoggle,       {.ui = ~0}},
 
-	{MODKEY|ControlMask,                    XK_Left,            shiftview,            {.i = -1 }},
-	{MODKEY|Mod1Mask,                       XK_Left,            moveleft,             {0}},
-	{MODKEY|ControlMask,                    XK_Right,           shiftview,            {.i = +1 }},
+	{MODKEY|ControlMask,                    XK_Left,            directionfocus,            {.ui = 3 }},
+	{MODKEY|ControlMask,                    XK_Right,           directionfocus,            {.ui = 1 }},
+	{MODKEY|ControlMask,                    XK_Up,              directionfocus,            {.ui = 0 }},
+	{MODKEY|ControlMask,                    XK_Down,            directionfocus,            {.ui = 2 }},
 
+	{MODKEY|ShiftMask|ControlMask,                    XK_Right,           shiftview,            {.i = +1 }},
+	{MODKEY|ShiftMask|ControlMask,                    XK_Left,           shiftview,            {.i = -1 }},
+
+	{MODKEY|Mod1Mask,                       XK_Left,            moveleft,             {0}},
 	{MODKEY|Mod1Mask,                       XK_Right,           moveright,            {0}},
 
 	{MODKEY|ShiftMask,                      XK_Left,            tagtoleft,            {0}},
