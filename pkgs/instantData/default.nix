@@ -21,10 +21,11 @@ stdenv.mkDerivation {
   version = "unstable";
 
   src = fetchFromGitHub {
-    owner = "SCOTT-HAMILTON";
+    # owner = "SCOTT-HAMILTON";
+    owner = "ppenguin";
     repo = "instantData";
-    rev = "ade1148cd26c272cb569f9a4c10337f5a4e91f29";
-    sha256 = "1207ihwxss7v3wz4xcvg21p10a8yz1r9phzb4n43138jpaynziqx";
+    rev = "8f86684d38bbe2ffb36cf3c597b592c344dc5b52";
+    sha256 = "1kiwf4blcfhh4dz9jwas3jvqv8bc33id446a8zv1813jjwmj6nvw";
     name = "instantOS_instantData";
   };
 
@@ -67,7 +68,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "instantOS Data";
     license = licenses.mit;
-    homepage = "https://github.com/instantOS/IinstantData";
+    homepage = "https://github.com/SCOTT-HAMILTON/InstantData";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;
   };
