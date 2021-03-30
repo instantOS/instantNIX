@@ -23,6 +23,7 @@
 , system-config-printer
 , udiskie
 , xfce4-power-manager
+, gnome3
 }:
 let
   utilities = [
@@ -47,6 +48,7 @@ let
     papirus-icon-theme
     arc-theme
     hicolor-icon-theme
+    gnome3.zenity
   ];
 in
 stdenv.mkDerivation {
@@ -57,8 +59,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantSETTINGS";
-    rev = "da44556c23b5f7d25c113c7fb3459a08b7a00686";
-    sha256 = "sha256-ESy0hXn3z1v2Rd4Xi8mjJW7KjYRBsoqu/aqifTeT6FU=";
+    rev = "da0f7cc0e408a46ae452a495c3719491b31dd913";
+    sha256 = "YemYpUWJJoAtjGJvmjDLIOVSmJeSHyjdHvJ3TYIQHEg=";
   };
   # src = ../../src/instantsettings;
 

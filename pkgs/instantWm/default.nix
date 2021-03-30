@@ -24,8 +24,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantWM";
-    rev = "78216bb3d862f984451caf3890769fdf5e07a34e";
-    sha256 = "sha256-nUHEWtNOfsMI025TN6Sw/uX6eFohRUHHp5GDhUmvl+w=";
+    rev = "2e7290ec8f462a191e8b3778df64389d9650f881";
+    sha256 = "sha256-d+Nx9R8qJMWlNdFA+xspNZBOzlNG/HZ/N+TDTYAwJQ4=";
     name = "instantOS_instantWm";
   };
   #src = ../../src/instantwm;
@@ -76,7 +76,7 @@ stdenv.mkDerivation {
     license = licenses.mit;
     homepage = "https://github.com/instantOS/instantWM";
     maintainers = [ 
-        stdenv.lib.maintainers.shamilton
+        maintainers.shamilton
         "con-f-use <con-f-use@gmx.net>"
         "paperbenni <instantos@paperbenni.xyz>"
     ];
