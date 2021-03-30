@@ -25,7 +25,7 @@ stdenv.mkDerivation {
     owner = "ppenguin";
     repo = "instantData";
     rev = "9333d102c20f17d5f191880727f7888c5907cbcd";
-    sha256 = "sha256:1jb43ajd140m3mdqzs7vyyd7634j1zl0wdni48scs5mvgb7kgz51";
+    sha256 = "sha256:13xv5s8sr6vrlxs60w3c8x8s16wbbmvqywh44q6j79lq5mgrj4b5";
     name = "instantOS_instantData";
   };
 
