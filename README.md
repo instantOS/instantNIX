@@ -51,7 +51,8 @@ on your system if not already installed:
 curl -L https://nixos.org/nix/install | sh
 ```
 
-Currently, you will have the least manual configuration to do if you use NixOS as a base.
+Currently, you will have the least manual configuration to do if you use NixOS as a base
+(the Nix universal package manager and build system works on many Linux Distributions and MacOS).
 
 # Installation from Clone
 
