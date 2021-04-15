@@ -322,7 +322,7 @@ static Key keys[] = {
 	{MODKEY, XK_f, spawn, {.v = firefoxcmd} },
 
 	{MODKEY,                                XK_v,               spawn,                {.v = quickmenucmd}},
-	{MODKEY,                                XK_b,               directionfocus,            {0}},
+	{MODKEY,                                XK_b,               togglebar,            {0}},
 	{MODKEY,                                XK_j,               focusstack,           {.i = +1}},
 	{MODKEY,                                XK_Down,            downkey,              {.i = +1}},
 	{MODKEY|ShiftMask,                      XK_Down,            downpress,            {0}},
@@ -417,7 +417,7 @@ static Key keys[] = {
 	TAGKEYS(XK_7, 6)
 	TAGKEYS(XK_8, 7)
 	TAGKEYS(XK_9, 8)
-	{MODKEY|ShiftMask|ControlMask, XK_q,                     quit,    {0}},
+    {MODKEY|ShiftMask|ControlMask, XK_q,                     quit,    {0}},
 	{0,                            XF86XK_MonBrightnessUp,   spawn,   {.v = upbright}},
 	{0,                            XF86XK_MonBrightnessDown, spawn,   {.v = downbright}},
 	{0,                            XF86XK_AudioLowerVolume,  spawn,   {.v = downvol}},
