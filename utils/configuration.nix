@@ -27,7 +27,9 @@ in {
   networking = {
     hostName = hostname;
     useDHCP = false;  # should be disabled
-    # ...instead enable for individual interfaces:
+    # ...instead enable for individual interfaces e.g.:
+    # interfaces."${physical_interface}".useDHCP = true;
+    # interfaces."${wifi_interface}".useDHCP = true;
   };
   services.xserver = {
     layout = "us";
