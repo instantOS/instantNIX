@@ -72,7 +72,7 @@ in {
   programs.slock.enable = true;
   services.clipmenu.enable = true;
   services.xserver.exportConfiguration = true;
-  services.dconf.enable = true;
+  programs.dconf.enable = true;
   services.gvfs.enable = true;
   services.xserver.displayManager = {
     defaultSession = "none+instantwm";
