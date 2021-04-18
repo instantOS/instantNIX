@@ -21,12 +21,10 @@ stdenv.mkDerivation {
   version = "unstable";
 
   src = fetchFromGitHub {
-    # owner = "SCOTT-HAMILTON";
-    owner = "ppenguin";
+    owner = "instantOS";
     repo = "instantData";
-    rev = "8f86684d38bbe2ffb36cf3c597b592c344dc5b52";
-    sha256 = "1kiwf4blcfhh4dz9jwas3jvqv8bc33id446a8zv1813jjwmj6nvw";
-    name = "instantOS_instantData";
+    rev = "6586ef068872ce6a41a5f87cfb3ad78dc173a507";
+    sha256 = "04y266scl47hb973hn4s42vxl3nd4ljv7k57ipf1md6snivxmjr9";
   };
 
   propagatedBuildInputs = [
