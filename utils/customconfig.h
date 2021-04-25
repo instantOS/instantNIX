@@ -11,6 +11,7 @@ static const int systraypinningfailfirst = 1; /* 1: if pinning fails, display sy
 static const int showsystray = 1;			  /* 0 means no systray */
 static const int showbar = 1;				  /* 0 means no bar */
 static const int topbar = 1;				  /* 0 means bottom bar */
+static const int gappx = 10;
 static const char *fonts[] = {"Cantarell-Regular:size=12", "Fira Code Nerd Font:size=12"};
 
 static int barheight;
@@ -129,7 +130,8 @@ static const Layout layouts[] = {
 		{MODKEY|ControlMask, KEY, toggleview, {.ui = 1 << TAG}}, \
 		{MODKEY|ShiftMask, KEY, tag, {.ui = 1 << TAG}},          \
 		{MODKEY|Mod1Mask, KEY, followtag, {.ui = 1 << TAG}},          \
-		{MODKEY|ControlMask|ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
+		{MODKEY|ControlMask|ShiftMask, KEY, toggletag, {.ui = 1 << TAG}}, \
+		{MODKEY|Mod1Mask|ShiftMask, KEY, swaptags, {.ui = 1 << TAG}},
 
 
 #define SHCMD(cmd)                                           \
@@ -152,6 +154,7 @@ static const char *instantpacmancmd[] = {"instantpacman", NULL};
 static const char *instantsharecmd[] = {"instantshare", "snap", NULL};
 static const char *nautiluscmd[] = {".config/instantos/default/filemanager", NULL};
 static const char *slockcmd[] = {".config/instantos/default/lockscreen", NULL};
+static const char *onekeylock[] = {"ilock", "-o", NULL};
 static const char *langswitchcmd[] = {"ilayout", NULL};
 static const char *oslockcmd[] = {"instantlock", "-o", NULL};
 static const char *helpcmd[] = {"instanthotkeys", "gui", NULL};
@@ -164,7 +167,7 @@ static const char *onboardcmd[] = {"onboard", NULL};
 static const char *instantshutdowncmd[] = {"instantshutdown", NULL};
 static const char *systemmonitorcmd[] = {".config/instantos/default/systemmonitor", NULL};
 static const char *notifycmd[] = {"instantnotify", NULL};
-static const char *rangercmd[] = { ".config/instantos/default/terminal", "-e", "ranger", NULL };
+static const char *rangercmd[] = { ".config/instantos/default/termfilemanager", NULL };
 static const char *panther[] = { ".config/instantos/default/appmenu", NULL};
 static const char *controlcentercmd[] = { "instantsettings", NULL};
 static const char *displaycmd[] = { "instantdisper", NULL};
@@ -228,14 +231,17 @@ static Xcommand commands[] = {
 	{ "overlay",                setoverlay,                   {0},         0 },
 	{ "tag",                    view,                         { .ui = 2 }, 3 },
 	{ "animated",               toggleanimated,               { .ui = 2 }, 1 },
-    { "focusfollowsmouse",      togglefocusfollowsmouse,      { .ui = 2 }, 1 },
-    { "focusfollowsfloatmouse", togglefocusfollowsfloatmouse, { .ui = 2 }, 1 },
+	{ "focusfollowsmouse",      togglefocusfollowsmouse,      { .ui = 2 }, 1 },
+	{ "focusfollowsfloatmouse", togglefocusfollowsfloatmouse, { .ui = 2 }, 1 },
 	{ "alttab",                 alttabfree,                   { .ui = 2 }, 1 },
 	{ "layout",                 commandlayout,                { .ui = 0 }, 1 },
 	{ "prefix",                 commandprefix,                { .ui = 1 }, 1 },
 	{ "alttag",                 togglealttag,                 { .ui = 0 }, 1 },
 	{ "hidetags",               toggleshowtags,               { .ui = 0 }, 1 },
 	{ "specialnext",            setspecialnext,               { .ui = 0 }, 3 },
+	{ "tagmon",                 tagmon,                       { .i = +1 }, 0 },
+	{ "followmon",              followmon,                    { .i = +1 }, 0 },
+	{ "focusmon",               focusmon,                     { .i = +1 }, 0 },
 };
 
 static Key dkeys[] = {
@@ -311,6 +317,7 @@ static Key keys[] = {
 	{MODKEY,                                XK_dead_circumflex, spawn,                {.v = caretinstantswitchcmd}},
 
 	{MODKEY | ControlMask, XK_l, spawn, SHCMD("slock & systemctl suspend")}, // {.v = slockcmd}}
+	{MODKEY|ControlMask|ShiftMask,          XK_l,               spawn,                {.v = onekeylock}},
 
 	{MODKEY|ControlMask,                    XK_h,               hidewin,              {0}},
 	{MODKEY|Mod1Mask|ControlMask,           XK_h,               unhideall,            {0}},
@@ -435,6 +442,10 @@ static Key keys[] = {
 	{MODKEY|Mod1Mask,              XK_Print,                 spawn,   {.v = fclipscrotcmd}},
 
 	{ MODKEY,                      XK_o,                     winview, {0} },
+
+	//{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
+    //{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
+	//{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 
 };
 
