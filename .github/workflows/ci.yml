@@ -55,6 +55,7 @@ jobs:
             export NIX_PATH=nixpkgs=channel:${{ matrix.channel-branch }}
           fi
           nix-build
+          nix-build -A tests
           nix eval -f default.nix 'lib'
           nix eval -f default.nix 'modules'
           nix eval -f default.nix 'overlays'

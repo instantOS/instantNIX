@@ -3,3 +3,4 @@ result*
 .direnv/
 *_build.nix
 pkgs/*/sources/
+.venv/
