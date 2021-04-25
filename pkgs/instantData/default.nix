@@ -23,8 +23,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "SCOTT-HAMILTON";
     repo = "instantData";
-    rev = "ade1148cd26c272cb569f9a4c10337f5a4e91f29";
-    sha256 = "1207ihwxss7v3wz4xcvg21p10a8yz1r9phzb4n43138jpaynziqx";
+    rev = "6586ef068872ce6a41a5f87cfb3ad78dc173a507";
+    sha256 = "Kcvad7TatBrcjafMsyUlzQ7atyCaWDhOWvAQyrQxwhM=";
     name = "instantOS_instantData";
   };
 
