@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Example on how to start certain programs on certain tags and monitors
 # in instantWM.
+#
+# Link to ~/.config/instantos/autostart.sh (must be executable).
 
 for x in wmctrl xrandr; do
    command -v "$cmd" 1>&2 2>/dev/null || 
@@ -23,6 +25,7 @@ startwin() {
       fi
       sleep 1
    done
+   echo "Timed out waiting for '$1'."
    exit 1
 }
 
