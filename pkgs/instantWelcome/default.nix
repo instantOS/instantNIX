@@ -28,8 +28,8 @@ buildPythonApplication {
   src = fetchFromGitHub {
     owner = "SCOTT-HAMILTON";
     repo = "instantWELCOME";
-    rev = "2776c5ab66b436c747c35c06f03df667065c427e";
-    sha256 = "1lrlwnc4n544i1w2z46irx6fvgz5i664d4kam15w2njfzz6wfhj3";
+    rev = "d3152445de8509c6460dd0ffec3f23ace9af707a";
+    sha256 = "YxHZhQkurQTcs4IC+Ij9HxGZrXQ6bRkT0Vy+9vlNOP8=";
     name = "instantOS_instantWelcome";
   };
 
