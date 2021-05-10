@@ -4,7 +4,7 @@
 #
 # Link to ~/.config/instantos/autostart.sh (must be executable).
 
-for x in wmctrl xrandr; do
+for cmd in wmctrl xrandr; do
    command -v "$cmd" 1>&2 2>/dev/null || 
       { echo "Please install '$cmd'!" 1>&2; exit; }
 done
@@ -21,6 +21,7 @@ startwin() {
    for x in {15..1}; do
       echo $x; wmctrl -l -x  # debug
       if wmctrl -l -x | grep -Fi "${2:-1}"; then
+         sleep 1
          return
       fi
       sleep 1
@@ -29,6 +30,7 @@ startwin() {
    exit 1
 }
 
+instantwmctrl animated 1  # turn of window manager animations
 instantwmctrl tag 1
 startwin firefox
 
@@ -55,10 +57,12 @@ startwin thunderbird
 instantwmctrl tag 5
 startwin kitty
 
-instanwmctrl tag 6
+instantwmctrl  tag 6
 firefox &
 sleep 2
 
 instantwmctrl tag 1
 instantwmctrl focusmon
+
+iconf -i noanimations || instantwmctrl animated 3  # re-enable animations if configured
 

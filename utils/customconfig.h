@@ -21,6 +21,7 @@ static char xresourcesfont[30];
 static char col_background[] = "#292f3a"; /* top bar dark background*/
 // fonts
 static char col_white[] = "#ffffff";/*white for fonts*/
+static char col_gray[] = "#747c90"; /*top bar minimized foreground*/
 
 // border active and inactive
 static char col_pastel_blue[] = "#747c90";/*unsaturated for focused border*/
@@ -58,7 +59,7 @@ static const char *colors[][4] = {
 	/*                    fg               bg              border 	           float*/
 	[SchemeNorm]      = { col_white,       col_background, col_pastel_blue,    col_green },
 	[SchemeSel]       = { col_white,       col_blue,       col_light_blue,     col_green },
-	[SchemeHid]       = { col_pastel_blue, col_background, col_pastel_blue,    col_green },
+	[SchemeHid]       = { col_gray,        col_background, col_pastel_blue,    col_green },
 	[SchemeTags]      = { col_white,       col_blue,       col_light_blue,     col_dark_blue },
 	[SchemeActive]    = { col_white,       col_green,      col_light_blue,     col_dark_green },
 	[SchemeAddActive] = { col_white,       col_orange,     col_light_blue,     col_dark_orange },
@@ -69,7 +70,9 @@ static const char *colors[][4] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "s" };
+#define MAX_TAGLEN 16
+static const char *tags_default[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "s"};
+static char tags[][MAX_TAGLEN] = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "s" };
 /* ffox, programming1, term, music, steam, folder, play icon, document, message  */
 static const char *tagsalt[] = { "", "{}", "$", "", "", "", "", "", "" };
 
@@ -100,6 +103,7 @@ static const Rule rules[] = {
 	{"Panther",                     NULL,     NULL,  0,         3,          -1},
 	{"org-wellkord-globonote-Main", NULL,     NULL,  0,         1,          -1},
 	{"Peek",                        NULL,     NULL,  0,         1,          -1},
+	{"Media viewer",                NULL,     NULL,  0,         1,          -1},
 	{"ROX-Filer",                   NULL,     NULL,  0,         0,          -1},
 };
 
@@ -223,8 +227,18 @@ ResourcePref resources[] = {
 		{ "barheight",        INTEGER, &barheight },
 		{ "font",             STRING,  &xresourcesfont },
 
+		{ "tag1",             STRING,  &tags[0] },
+		{ "tag2",             STRING,  &tags[1] },
+		{ "tag3",             STRING,  &tags[2] },
+		{ "tag4",             STRING,  &tags[3] },
+		{ "tag5",             STRING,  &tags[4] },
+		{ "tag6",             STRING,  &tags[5] },
+		{ "tag7",             STRING,  &tags[6] },
+		{ "tag8",             STRING,  &tags[7] },
+		{ "tag9",             STRING,  &tags[8] },
 };
 
+// instantwmctrl commands
 static Xcommand commands[] = {
 	/* signum       function        default argument  arg handler*/
     // 0 means off, 1 means toggle, 2 means on
@@ -242,6 +256,8 @@ static Xcommand commands[] = {
 	{ "tagmon",                 tagmon,                       { .i = +1 }, 0 },
 	{ "followmon",              followmon,                    { .i = +1 }, 0 },
 	{ "focusmon",               focusmon,                     { .i = +1 }, 0 },
+	{ "nametag",                nametag,                      { .v = "tag" }, 4 },
+	{ "resetnametag",           resetnametag,                 {0}, 0 },
 };
 
 static Key dkeys[] = {
