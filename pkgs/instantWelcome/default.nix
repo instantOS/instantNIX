@@ -9,18 +9,7 @@
 , gdk-pixbuf
 , atk
 }:
-let
-  pyModuleDeps = [
-    pygobject3
-  ];
-  gnomeDeps = [
-    wrapGAppsHook 
-    gobject-introspection
-    atk
-    gdk-pixbuf
-    pango
-  ];
-in
+
 buildPythonApplication {
   pname = "instantWelcome";
   version = "unstable";
@@ -29,8 +18,7 @@ buildPythonApplication {
     owner = "SCOTT-HAMILTON";
     repo = "instantWELCOME";
     rev = "d3152445de8509c6460dd0ffec3f23ace9af707a";
-    sha256 = "YxHZhQkurQTcs4IC+Ij9HxGZrXQ6bRkT0Vy+9vlNOP8=";
-    name = "instantOS_instantWelcome";
+    sha256 = "1zrq9pwzdgjws49ijv9sfjnrj48zzn4gh0l2ngf09b9f162xj4b3";
   };
 
   postPatch = ''
@@ -39,17 +27,22 @@ buildPythonApplication {
       --replace welcome.glade  "$out/share/welcome.glade"
   '';
 
-  nativeBuildInputs = gnomeDeps;
-  buildInputs = pyModuleDeps ;
-  propagatedBuildInputs = pyModuleDeps;
+  nativeBuildInputs = [
+    wrapGAppsHook 
+    gobject-introspection
+    atk
+    gdk-pixbuf
+    pango
+  ];
+  propagatedBuildInputs = [ pygobject3 ];
 
   doCheck = false;
 
   postInstall = ''
     mkdir -p "$out/bin"
-    ln -s "$out/lib/python3.7/site-packages/instantWELCOME/welcome.sh" "$out/bin/instantwelcome"
     install -Dm 644 instantWELCOME/welcome.glade "$out/share/welcome.glade"
     install -Dm 644 instantWELCOME/instantwelcome.desktop "$out/share/applications/instantwelcome.desktop"
+    ln -s "$out/bin/welcome" "$out/bin/instantwelcome"
   '';
 
   meta = with lib; {
