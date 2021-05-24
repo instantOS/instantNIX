@@ -71,7 +71,7 @@ let
 
     src = fetchurl {
       url = "https://raw.githubusercontent.com/instantOS/instantos.github.io/master/youtube/hotkeys.md";
-      sha256 = "1qdhy5kfl2vvxad1yvy2p5lmpxxmm7qfp2cgxsalayccm8kjk6jq";
+      sha256 = "sha256-WJopJ6qMeUWV7o+J6/CptfdbabnCbx+a6nsL6mbxsOE=";
     };
     sourceRoot = ".";
     unpackCmd =  "cp $curSrc hotkeys.md";
@@ -103,8 +103,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantOS";
-    rev = "1d9fec55779108a21776c562c698175c2a7e14a3";
-    sha256 = "NfRCSaphQXu/YaWeqPUyBVh2Rup+jkotdoWaDhqHuJU=";
+    rev = "c3af47619264b100c7c28bbb53f546fc3d3c1cc8";
+    sha256 = "2+idL503uRbGeDug6ubSOhDMpOMhYCnF+RciJ7vpGxA=";
     name = "instantOS_instantUtils";
   };
 
