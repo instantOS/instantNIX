@@ -16,18 +16,23 @@
 , extraPatches ? []
 , defaultTerminal ? st
 }:
+
+let
+  gitrev = {
+    owner = "instantOS";
+    repo = "instantWM";
+    rev = "416edc3f1b34179770aa136f371f5969b1c22cc9";
+    sha256 = "69WFzbLXZjoYFoPrN2hSfTd9Kqs+HvkQf8qcuHxDIqg=";
+    name = "instantOS_instantWm";
+  };
+in
+
 stdenv.mkDerivation {
 
   pname = "instantWm";
   version = "unstable";
 
-  src = fetchFromGitHub {
-    owner = "instantOS";
-    repo = "instantWM";
-    rev = "8e2cc57f817c3499cb9309b7166c2e33dc002f7e";
-    sha256 = "lec+62lU0CVHjHJ45QH0iyVLUSdQUe8OMbuiHpv/EMs=";
-    name = "instantOS_instantWm";
-  };
+  src = fetchFromGitHub gitrev;
   #src = ../../src/instantwm;
 
   patches = [ ] ++ extraPatches;
@@ -60,6 +65,10 @@ stdenv.mkDerivation {
     instantAssist
     instantUtils
   ];
+
+  preBuild = ''
+    makeFlagsArray+=(VERSION='"instantOS beta6-g${gitrev.rev} instantNIX"' CMS_VERSION="${gitrev.rev}")
+  '';
 
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
