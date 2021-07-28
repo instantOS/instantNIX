@@ -97,6 +97,9 @@ in {
     };
   };
 
+  # fix java windows
+  environment.variables._JAVA_AWT_WM_NONREPARENTING = "1";
+
   users.users."${main_user}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "audio" "networkmanager" "wireshark" "dialout" "disk" "video" "docker" ];
