@@ -13,8 +13,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantNOTIFY";
-    rev = "c7f2edbdea808f26ecb71bc914879106a1fe6509";
-    sha256 = "VIsDNVuMV3PjsvpIplbqj8RFkS/hsYw0gBURCMN+txE=";
+    rev = "196e05d296e645add9cda55af180ceafeb77ce03";
+    sha256 = "R6vkIRsYhre+s5tfP0oIH16AnfDM890ectZAKjjGQPY=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
@@ -23,9 +23,6 @@ stdenv.mkDerivation {
   makeFlags = [ "DESTDIR=$(out)/" "PREFIX=" ];
 
   postPatch = ''
-    substituteInPlace install.sh \
-      --replace "/usr" "$out" \
-      --replace "sudo " ""
     patchShebangs *.sh
   '';
 
