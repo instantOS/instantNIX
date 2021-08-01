@@ -4,3 +4,4 @@ result*
 *_build.nix
 pkgs/*/sources/
 .venv/
+*.orig
