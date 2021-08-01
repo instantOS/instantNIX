@@ -12,8 +12,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "paperbenni";
     repo = "dotfiles";
-    rev = "b41850c14a789c52456706985d8c766dc3f112d2";
-    sha256 = "xG/uKD60RgNy2daUrAupUVBHU+lBgMGE0inoHIqB/Xw=";
+    rev = "b2f6fa5efc6de7f1573102c41928b990389336c9";
+    sha256 = "1w+4ZleyHWCEk479KObILWrnBWZoosNkrvIh3rg6Bic=";
     name = "instantOS_instantDotfiles";
   };
 
