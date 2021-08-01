@@ -6,8 +6,8 @@
 
 -------
 
-| main [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=master)](https://travis-ci.org/instantOS/instantNIX) |
-dev [![Build Status](https://travis-ci.org/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.org/instantOS/instantNIX) |
+| main [![Build Status](https://travis-ci.com/instantOS/instantNIX.svg?branch=master)](https://travis-ci.com/instantOS/instantNIX) |
+dev [![Build Status](https://travis-ci.com/instantOS/instantNIX.svg?branch=dev)](https://travis-ci.com/instantOS/instantNIX) |
 cache [![Cachix Cache](https://img.shields.io/badge/cachix-instantos-blue.svg)](https://instantos.cachix.org) |
 
 [InstantOS](https://instantos.github.io/) window manager and tools packaged for Nix and NixOS.
