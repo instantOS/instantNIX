@@ -30,6 +30,10 @@ startwin() {
    exit 1
 }
 
+if command -v PERScom 2>/dev/null; then
+    while ! PERScom 2 2 on; do sleep 2 done &
+fi
+
 instantwmctrl animated 1  # turn of window manager animations
 instantwmctrl tag 1
 startwin firefox
