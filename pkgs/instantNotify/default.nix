@@ -13,8 +13,8 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantNOTIFY";
-    rev = "196e05d296e645add9cda55af180ceafeb77ce03";
-    sha256 = "R6vkIRsYhre+s5tfP0oIH16AnfDM890ectZAKjjGQPY=";
+    rev = "ad4bdbf161b39a21d64f89aa11020df90cff0285";
+    sha256 = "Lb3xm43heIyHVRfGVsXWl9Y4pSoOyzeZGcq1aZU26hU=";
   };
 
   nativeBuildInputs = [ makeWrapper ];
