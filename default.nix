@@ -157,6 +157,7 @@ rec {
         self.pkgs.xdg-user-dirs
         self.pkgs.papirus-icon-theme
         self.pkgs.arc-theme
+        pkgs.xorg.xeyes
     ];
   };
 } )
