@@ -27,7 +27,7 @@ stdenvNoCC.mkDerivation {
     check --get-conf-dir /bin/instantconf ASCII
 
     echo "Checking instantdotfiles..."
-    check --get-dotfiles-dir /bin/instantdotfiles ASCII
+    check --get-dotfiles-dir /share/instantdotfiles/rootinstall.sh ASCII
 
     echo "Checking instantlogo..."
     check --get-logo-dir /share/backgrounds/readme.jpg JPEG
