@@ -4,39 +4,32 @@
 , instantConf
 , instantWallpaper
 }:
+let
+  rev = "84aadb3b36c9a2d07d5dfb646c1e2dae974df442";
+in
 stdenv.mkDerivation {
 
   pname = "instantDotfiles";
   version = "unstable";
 
   src = fetchFromGitHub {
-    owner = "paperbenni";
+    inherit rev;
+    owner = "instantOS";
     repo = "dotfiles";
-    rev = "afac3ba7519f0c1a47b373667df201bbf7e3baa8";
-    sha256 = "wVCrG04mx1aNZkzuobCSN18uDygfwIDPfzGkj2SkOM0=";
+    sha256 = "1bb9n4ir6cxkfd5h4zqsmb7x6nzfscd4m4q9qn5c7a01lmh27iac";
     name = "instantOS_instantDotfiles";
   };
 
-  patches = [ ./fix-absolute-paths.patch ];
-
   postPatch = ''
-    substituteInPlace instantdotfiles \
-      --replace iconf "${instantConf}/bin/iconf" \
-      --replace "/usr/share/instantdotfiles/versionhash" "$out/share/instantdotfiles/versionhash" \
-      --replace "/usr/share/instantdotfiles" "$out/share/instantdotfiles"
-    substituteInPlace userinstall.sh \
-      --replace iconf "${instantConf}/bin/iconf" \
-      --replace "/usr/share/instantdotfiles" "$out/share/instantdotfiles"
-    substituteInPlace neofetch.conf \
+    substituteInPlace rootconfig/lightdm-gtk-greeter.conf \
       --replace "/usr/share/instantwallpaper" "${instantWallpaper}/share/instantwallpaper"
   '';
   
   installPhase = ''
-    mkdir -p $out/share/instantdotfiles
-    install -Dm 555 instantdotfiles $out/bin/instantdotfiles
-    rm instantdotfiles
-    mv * $out/share/instantdotfiles
-    echo "6081b26" > $out/share/instantdotfiles/versionhash
+    mkdir -p "$out/share/instantdotfiles"
+    echo "${lib.substring 0 7 rev}" > $out/share/instantdotfiles/versionhash
+    install -m644 -D LICENSE "$out/share/licenses/instantdotfiles/LICENSE"
+    mv * "$out/share/instantdotfiles"
   '';
 
   propagatedBuildInputs = [ instantConf instantWallpaper ];
@@ -44,7 +37,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "instantOS dotfiles";
     license = licenses.mit;
-    homepage = "https://github.com/paperbenni/dotfiles";
+    homepage = "https://github.com/instantOS/dotfiles";
     maintainers = [ "Scott Hamilton <sgn.hamilton+nixpkgs@protonmail.com>" ];
     platforms = platforms.linux;
   };
