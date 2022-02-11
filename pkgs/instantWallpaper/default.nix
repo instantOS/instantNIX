@@ -9,6 +9,7 @@
 , imagemagick
 , nitrogen
 , xdg-user-dirs
+, zenity
 }:
 stdenv.mkDerivation {
 
@@ -46,6 +47,7 @@ stdenv.mkDerivation {
     imagemagick
     nitrogen
     xdg-user-dirs
+    zenity
   ];
 
   postPatch = ''
@@ -54,6 +56,8 @@ stdenv.mkDerivation {
       --replace /usr/share/instantwallpaper/wallutils.sh wallutils.sh \
       --replace "/usr/share/paperbash" "${Paperbash}/share/paperbash" \
       --replace wallutils.sh "$out/share/instantwallpaper/wallutils.sh"
+    substituteInPlace wallutils.sh \
+      --replace 'zenity' "${zenity}/bin/zenity"
     patchShebangs *.sh
   '';
 
