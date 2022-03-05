@@ -2,7 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , gnumake
-, xlibs
 }:
 stdenv.mkDerivation {
 

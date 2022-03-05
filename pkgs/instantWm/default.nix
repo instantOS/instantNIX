@@ -2,7 +2,6 @@
 , stdenv
 , fetchFromGitHub
 , gnumake
-, xlibs
 , pavucontrol
 , rofi
 , rxvt_unicode
@@ -12,6 +11,9 @@
 , instantAssist
 , instantUtils
 , instantDotfiles
+, libX11
+, libXft
+, libXinerama
 , wmconfig ? null
 , extraPatches ? []
 , defaultTerminal ? st
@@ -33,7 +35,6 @@ stdenv.mkDerivation {
   version = "unstable";
 
   src = fetchFromGitHub gitrev;
-  #src = ../../src/instantwm;
 
   patches = [ ] ++ extraPatches;
 
@@ -52,7 +53,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ gnumake ];
-  buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
+  buildInputs = [ libX11 libXft libXinerama ];
   propagatedBuildInputs = [
     cantarell-fonts
     #joypixels
