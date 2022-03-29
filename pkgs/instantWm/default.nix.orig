@@ -2,6 +2,7 @@
 , stdenv
 , fetchFromGitHub
 , gnumake
+, xlibs
 , pavucontrol
 , rofi
 , rxvt_unicode
@@ -11,30 +12,28 @@
 , instantAssist
 , instantUtils
 , instantDotfiles
-, libX11
-, libXft
-, libXinerama
 , wmconfig ? null
 , extraPatches ? []
 , defaultTerminal ? st
 }:
-
-let
-  gitrev = {
-    owner = "instantOS";
-    repo = "instantWM";
-    rev = "416edc3f1b34179770aa136f371f5969b1c22cc9";
-    sha256 = "69WFzbLXZjoYFoPrN2hSfTd9Kqs+HvkQf8qcuHxDIqg=";
-    name = "instantOS_instantWm";
-  };
-in
-
 stdenv.mkDerivation {
 
   pname = "instantWm";
   version = "unstable";
 
-  src = fetchFromGitHub gitrev;
+  src = fetchFromGitHub {
+    owner = "instantOS";
+    repo = "instantWM";
+<<<<<<< HEAD
+    rev = "a853f9b004365b7ff10947028af4d19cd9965326";
+    sha256 = "ZaUb2ODL534rF+zjgUEF3/mOIGYLSvHIWcV/r+X7RaM=";
+=======
+    rev = "21f3bcf0e3660d423d73024e0378314f82bf7163";
+    sha256 = "KUBKY42Jdjryddy9RKQrhaEwqQYBOTdrVuGw7XzxNnw=";
+>>>>>>> 1ef1b324e4c65170db12c434b784b5bd3149b6cb
+    name = "instantOS_instantWm";
+  };
+  #src = ../../src/instantwm;
 
   patches = [ ] ++ extraPatches;
 
@@ -53,7 +52,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ gnumake ];
-  buildInputs = [ libX11 libXft libXinerama ];
+  buildInputs = with xlibs; map lib.getDev [ libX11 libXft libXinerama ];
   propagatedBuildInputs = [
     cantarell-fonts
     #joypixels
@@ -66,10 +65,6 @@ stdenv.mkDerivation {
     instantAssist
     instantUtils
   ];
-
-  preBuild = ''
-    makeFlagsArray+=(VERSION='"instantOS beta6-g${gitrev.rev} instantNIX"' CMS_VERSION="${gitrev.rev}")
-  '';
 
   installPhase = ''
     install -Dm 555 instantwm $out/bin/instantwm
