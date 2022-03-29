@@ -30,6 +30,8 @@ stdenv.mkDerivation {
     echo "${lib.substring 0 7 rev}" > $out/share/instantdotfiles/versionhash
     install -m644 -D LICENSE "$out/share/licenses/instantdotfiles/LICENSE"
     mv * "$out/share/instantdotfiles"
+    mkdir -p $out/share/instantdotfiles/rofi/
+    cp -r $out/share/instantdotfiles/rootconfig/rofi/* $out/share/instantdotfiles/rofi/
   '';
 
   propagatedBuildInputs = [ instantConf instantWallpaper ];

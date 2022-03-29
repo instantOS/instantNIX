@@ -149,7 +149,7 @@ stdenv.mkDerivation rec {
     substituteInPlace programs/appmenu \
       --replace "#!/usr/bin/dash" "#!/bin/sh" \
       --replace "/usr/share/instantdotfiles/rofi/appmenu.rasi" "tmp_placeholder" \
-      --replace "tmp_placeholder" "\$(instantdata --get-userconfig-dir=rofi)/appmenu.rasi"
+      --replace "tmp_placeholder" "\$(instantdata --get-dotfiles-dir)/share/instantdotfiles/rootconfig/rofi/appmenu.rasi"
     substituteInPlace autostart.sh \
       --replace /usr/bin/instantstatus "$out/bin/instantstatus" \
       --replace /usr/share/instantutils "$out/share/instantutils" \
