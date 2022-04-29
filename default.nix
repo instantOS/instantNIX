@@ -32,6 +32,7 @@ rec {
 
   # instant WM and utils
   argtable3 = pkgs.callPackage ./pkgs/argtable3 { };
+  disper = pkgs.callPackage ./pkgs/disper { };
   gufw = with pkgs.python3Packages; pkgs.callPackage ./pkgs/gufw { inherit buildPythonApplication distutils_extra; };
   imenu = pkgs.callPackage ./pkgs/imenu { instantMenu = self.instantmenu; };
   instantconf = pkgs.callPackage ./pkgs/instantConf { };
