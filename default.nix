@@ -58,10 +58,9 @@ rec {
     Paperbash = self.paperbash;
   };
   instantutils = pkgs.callPackage ./pkgs/instantUtils {
-    lxsession = lxsession;
-    rangerplugins = self.rangerplugins;
-    xfce4-power-manager = pkgs.xfce.xfce4-power-manager;
-    zenity = pkgs.gnome3.zenity;
+    inherit lxsession rangerplugins disper;
+    inherit (pkgs.xfce) xfce4-power-manager;
+    inherit (pkgs.gnome3) zenity;
   };
   instantmenu = pkgs.callPackage ./pkgs/instantMenu {
     instantUtils = self.instantutils;
