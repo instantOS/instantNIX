@@ -1,0 +1,11 @@
+--- a/lock.h	1969-12-31 19:00:01.000000000 -0500
++++ b/lock.h	2022-12-12 20:00:40.502845243 -0500
+@@ -28,7 +28,7 @@
+ 
+ #include "util.h"
+ 
+-char *argv0;
++extern char *argv0;
+ 
+ /* global count to prevent repeated error messages */
+ static int count_error = 0;

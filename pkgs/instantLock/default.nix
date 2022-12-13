@@ -21,11 +21,12 @@ stdenv.mkDerivation rec {
 
   installFlags = [ "DESTDIR=\${out}" "PREFIX=" ];
 
+  patches = [ ./add-extern-to-lock.patch ];
+
   postPatch = ''
     sed -i '/chmod u+s/d' Makefile
     substituteInPlace config.def.h \
-      --replace 'group = "nobody"' 'group = "nogroup"'
-    sed -n "5,6p"
+      --replace 'group = "nobody"' 'group = "nogroup"' | sed -n "5,6p"
   '';
 
   preBuild = optionalString (conf != null) ''
