@@ -1,9 +1,6 @@
-{ stdenv, lib, fetchurl, writeText
-, fetchFromGitHub
-, argtable3, glib, wrapGAppsHook, pkg-config
-, xorgproto, libX11, libXext, libXrandr, libXinerama
-, instantMenu
-, conf ? null }:
+{ stdenv, lib, fetchurl, writeText, fetchFromGitHub, argtable3, glib
+, wrapGAppsHook, pkg-config, xorgproto, libX11, libXext, libXrandr, libXinerama
+, libxcrypt, instantMenu, conf ? null }:
 
 with lib;
 stdenv.mkDerivation rec {
@@ -18,7 +15,8 @@ stdenv.mkDerivation rec {
   };
 
   nativeBuildInputs = [ wrapGAppsHook pkg-config ];
-  buildInputs = [ argtable3 glib xorgproto libX11 libXext libXrandr libXinerama ];
+  buildInputs =
+    [ argtable3 glib xorgproto libX11 libXext libXrandr libXinerama libxcrypt ];
   propagatedBuildInputs = [ instantMenu ];
 
   installFlags = [ "DESTDIR=\${out}" "PREFIX=" ];
@@ -28,8 +26,7 @@ stdenv.mkDerivation rec {
     substituteInPlace config.def.h \
       --replace 'group = "nobody"' 'group = "nogroup"'
     sed -n "5,6p"
-  ''
-  ;
+  '';
 
   preBuild = optionalString (conf != null) ''
     cp ${writeText "config.def.h" conf} config.def.h

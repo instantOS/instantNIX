@@ -6,6 +6,7 @@
 , libX11
 , libXft
 , libXinerama
+, libxcrypt
 }:
 
 stdenv.mkDerivation {
@@ -21,7 +22,7 @@ stdenv.mkDerivation {
   };
 
   nativeBuildInputs = [ gnumake ];
-  buildInputs = [ libX11 libXft libXinerama ];
+  buildInputs = [ libX11 libXft libXinerama libxcrypt ];
   propagatedBuildInputs = [ instantUtils ];
 
   postPatch = ''

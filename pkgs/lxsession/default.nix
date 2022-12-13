@@ -13,6 +13,7 @@
 , wrapGAppsHook
 , glib
 , libX11
+, libxcrypt
 , gtk2-x11
 , polkit
 , vala
@@ -47,7 +48,7 @@ stdenv.mkDerivation {
     automake
     libtool
   ];
-  buildInputs = [ polkit gtk2-x11 libX11 ];
+  buildInputs = [ polkit gtk2-x11 libX11 libxcrypt ];
   
   configureFlags = [
     "--enable-man"
