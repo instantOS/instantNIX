@@ -28,12 +28,14 @@
       # lib.filterAttrs (n: lib.isDerivation);
     in
     {
-      packages = forAllSystems (system: {
-        default =
+      packages = forAllSystems (system:
+        lib.filterAttrs (n: v: lib.isDerivation v)
           (import ./default.nix {
             pkgs = nixpkgs.legacyPackages.${system} or (import nixpkgs { inherit system; });
-          }).instantnix;
-      });
+          }) // {
+          default = self.packages.${system}.instantnix;
+        }
+      );
 
       nixosModules = (import ./modules).modules;
     };
