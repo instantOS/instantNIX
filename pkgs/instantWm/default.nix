@@ -14,6 +14,7 @@
 , libX11
 , libXft
 , libXinerama
+, libxcrypt
 , wmconfig ? null
 , extraPatches ? []
 , defaultTerminal ? st
@@ -53,7 +54,7 @@ stdenv.mkDerivation {
   '';
 
   nativeBuildInputs = [ gnumake ];
-  buildInputs = [ libX11 libXft libXinerama ];
+  buildInputs = [ libX11 libXft libXinerama libxcrypt ];
   propagatedBuildInputs = [
     cantarell-fonts
     #joypixels
