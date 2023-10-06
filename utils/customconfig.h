@@ -21,7 +21,7 @@ static char xresourcesfont[30];
 static char col_background[] = "#292f3a"; /* top bar dark background*/
 // fonts
 static char col_white[] = "#ffffff";/*white for fonts*/
-static char col_gray[] = "#747c90"; /*top bar minimized foreground*/
+static char col_gray[] = "#747c91"; /*top bar minimized foreground*/
 
 // border active and inactive
 static char col_pastel_blue[] = "#747c90";/*unsaturated for focused border*/
@@ -44,7 +44,7 @@ static char col_orange[] = "#E1A052";/*focused instantmenu or topbar d */
 static char col_dark_orange[] = "#CB8735";/*focused instantmenu or topbar d */
 
 // close button
-static char col_red[] = "#E1527E";/*focused instantmenu or topbar d */
+static char col_red[] = "#E1527F";/*focused instantmenu or topbar d */
 static char col_dark_red[] = "#CB3563";/*focused instantmenu or topbar d */
 
 // hover over close button

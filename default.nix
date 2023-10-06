@@ -138,7 +138,7 @@ rec {
         self.instantconf
         self.instantdata
         self.instantdotfiles
-        self.instantlock
+        # self.instantlock
         self.instantlogo
         self.instantmenu
         self.instantnotify

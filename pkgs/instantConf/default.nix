@@ -11,18 +11,20 @@ stdenv.mkDerivation {
   src = fetchFromGitHub {
     owner = "instantOS";
     repo = "instantconf";
-    rev = "aac6ab4e3b9263b464ed14234f957c47016ac371";
-    sha256 = "waLwo9w+s2KoZp1rzDk43OACadkFif4iyabjghL/uDo=";
+    rev = "0449f4be7582abec0307fb0be9132cc7130b8979";
+    hash = "sha256-9ebY874ngGJSR73lAmxt5Q4FLh7x3dm8fLHql/rGL0I=";
     name = "instantOS_instantConf";
   };
 
   postPatch = ''
-    substituteInPlace instantconf \
+    substituteInPlace instantconf.sh \
       --replace sqlite3 "${lib.getBin sqlite}/bin/sqlite3"
   '';
 
+  buildPhase = "true";
+
   installPhase = ''
-    install -Dm 555 instantconf $out/bin/instantconf
+    install -Dm 555 instantconf.sh $out/bin/instantconf
     ln -s $out/bin/instantconf $out/bin/iconf
   '';
 
